@@ -13,3 +13,9 @@
 
 ### Changelog
 * syntaxes are converted from PLIST to JSON
+* added custom macros
+    * each
+    * loop
+    * component
+    * icon
+    * inlineSvg
