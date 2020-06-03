@@ -10,6 +10,7 @@
 * [PLIST to JSON converter](http://json2plist.sinaapp.com)
 * [JSON formatter](https://jsonformatter.curiousconcept.com)
 * [CSON to JSON converter](https://cson-json-converter.netlify.app)
+* [VS Code Syntax Highlight Guide](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide)
 
 ### Changelog
 * syntaxes are converted from PLIST to JSON

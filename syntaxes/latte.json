@@ -90,5 +90,5 @@
             ]
         }
     },
-    "scopeName": "source.latte"
+    "scopeName": "text.html.latte"
 }
