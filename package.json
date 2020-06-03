@@ -49,7 +49,10 @@
 			{
 				"language": "latte",
 				"scopeName": "text.html.latte",
-				"path": "./syntaxes/latte.json"
+				"path": "./syntaxes/latte.json",
+				"embeddedLanguages": {
+					"source.n-macro.latte": "php"
+				}
 			}
 		],
 		"snippets": [
