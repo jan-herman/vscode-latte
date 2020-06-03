@@ -1,0 +1,314 @@
+{
+    "name": "Latte",
+    "fileTypes": [
+        "latte"
+    ],
+    "patterns": [
+        {
+            "match": "((')((?:[^'\\\\]|\\\\.)*)('))",
+            "captures": {
+                "1": {
+                    "name": "string.quoted.single.latte"
+                },
+                "2": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "3": {
+                    "name": "meta.string-contents.quoted.single.latte"
+                },
+                "4": {
+                    "name": "punctuation.definition.string.end.latte"
+                }
+            }
+        },
+        {
+            "match": "((\")((?:[^\"\\\\]|\\\\.)*)(\"))",
+            "captures": {
+                "1": {
+                    "name": "string.quoted.double.latte"
+                },
+                "2": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "3": {
+                    "name": "meta.string-contents.quoted.double.latte"
+                },
+                "4": {
+                    "name": "punctuation.definition.string.end.latte"
+                }
+            }
+        },
+        {
+            "match": "(\\[) *(?:((')((?:[^'\\\\]|\\\\.)*)('))|((\")((?:[^\"\\\\]|\\\\.)*)(\"))|([a-zA-Z_][\\w_]*)|(\\d+))? *(\\])",
+            "captures": {
+                "1": {
+                    "name": "punctuation.section.array.begin.latte"
+                },
+                "2": {
+                    "name": "string.quoted.single.latte"
+                },
+                "3": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "4": {
+                    "name": "meta.string-contents.quoted.single.latte"
+                },
+                "5": {
+                    "name": "punctuation.definition.string.end.latte"
+                },
+                "6": {
+                    "name": "string.quoted.double.latte"
+                },
+                "7": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "8": {
+                    "name": "meta.string-contents.quoted.double.latte"
+                },
+                "9": {
+                    "name": "punctuation.definition.string.end.latte"
+                },
+                "10": {
+                    "name": "constant.other.latte"
+                },
+                "11": {
+                    "name": "constant.numeric.latte"
+                },
+                "12": {
+                    "name": "punctuation.section.array.end.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:(array)(\\()|(\\[)|,)? *(?:(\\d+)|([a-zA-Z_][\\w_]*)) *(?==>)",
+            "captures": {
+                "1": {
+                    "name": "support.function.construct.latte"
+                },
+                "2": {
+                    "name": "punctuation.definition.array.begin.latte"
+                },
+                "3": {
+                    "name": "punctuation.section.array.begin.latte"
+                },
+                "4": {
+                    "name": "constant.numeric.latte"
+                },
+                "5": {
+                    "name": "constant.other.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:(=>)|(=)) *(?:((')((?:[^'\\\\]|\\\\.)*)('))|((\")((?:[^\"\\\\]|\\\\.)*)(\"))|([+-]?(?:\\d*\\.\\d+|\\d+\\.\\d*|\\d+)(?:[eE][+-]?\\d+)?)|([nN][uU][lL][lL]|[fF][aA][lL][sS][eE]|[tT][rR][uU][eE])|([a-zA-Z_][\\w_]*)) *(?=,|\\]|\\)|\\})",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.key.latte"
+                },
+                "2": {
+                    "name": "keyword.operator.assignment.latte"
+                },
+                "3": {
+                    "name": "string.quoted.single.latte"
+                },
+                "4": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "5": {
+                    "name": "meta.string-contents.quoted.single.latte`"
+                },
+                "6": {
+                    "name": "punctuation.definition.string.end.latte`"
+                },
+                "7": {
+                    "name": "string.quoted.double.latte"
+                },
+                "8": {
+                    "name": "punctuation.definition.string.begin.latte"
+                },
+                "9": {
+                    "name": "meta.string-contents.quoted.double.latte"
+                },
+                "10": {
+                    "name": "punctuation.definition.string.end.latte"
+                },
+                "11": {
+                    "name": "constant.numeric.latte"
+                },
+                "12": {
+                    "name": "constant.language.latte"
+                },
+                "13": {
+                    "name": "constant.other.latte"
+                }
+            }
+        },
+        {
+            "match": "(->)(?:([a-zA-Z_][\\w_]*)\\(|((\\$)?[a-zA-Z_][\\w_]*))",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.class.latte"
+                },
+                "2": {
+                    "name": "meta.function-call.object.latte"
+                },
+                "3": {
+                    "name": "variable.other.property.latte"
+                },
+                "4": {
+                    "name": "punctuation.definition.variable.latte"
+                }
+            }
+        },
+        {
+            "match": "[\\[(,] *([+-]?(?:\\d*\\.\\d+|\\d+\\.\\d*|\\d+)(?:[eE][+-]?\\d+)?) *(?:(\\))|(\\]))?",
+            "captures": {
+                "1": {
+                    "name": "constant.numeric.latte"
+                },
+                "2": {
+                    "name": "punctuation.definition.array.end.latte"
+                },
+                "3": {
+                    "name": "punctuation.section.array.end.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:(=>)|(=)|(->|::)|(\\[)|(\\])|(;))",
+            "captures": {
+                "1": {
+                    "name": "keyword.operator.key.latte"
+                },
+                "2": {
+                    "name": "keyword.operator.assignment.latte"
+                },
+                "3": {
+                    "name": "keyword.operator.class.latte"
+                },
+                "4": {
+                    "name": "punctuation.section.array.begin.latte"
+                },
+                "5": {
+                    "name": "punctuation.section.array.end.latte"
+                },
+                "6": {
+                    "name": "punctuation.terminator.expression.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:{(\\/)?(foreach)| +(as) +)",
+            "captures": {
+                "1": {
+                    "name": "constant.helper.latte"
+                },
+                "2": {
+                    "name": "keyword.control.latte"
+                },
+                "3": {
+                    "name": "keyword.operator.logical.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:((\\$+)[a-zA-Z_][\\w_]*)|(\\${)((\\$)[a-zA-Z_][\\w_]*)(}))",
+            "captures": {
+                "1": {
+                    "name": "variable.other.latte"
+                },
+                "2": {
+                    "name": "punctuation.definition.variable.latte"
+                },
+                "3": {
+                    "name": "punctuation.definition.variable.latte"
+                },
+                "4": {
+                    "name": "variable.other.latte"
+                },
+                "5": {
+                    "name": "punctuation.definition.variable.latte"
+                },
+                "6": {
+                    "name": "punctuation.definition.variable.latte"
+                }
+            }
+        },
+        {
+            "match": "(new) ((?:\\\\?[a-zA-Z_][\\w_]*)*) *\\(\\)",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.new.latte"
+                },
+                "2": {
+                    "name": "support.class.builtin.latte"
+                }
+            }
+        },
+        {
+            "match": "\\|([^\\s|}:]+) *",
+            "captures": {
+                "1": {
+                    "name": "support.function.classobj.latte"
+                }
+            }
+        },
+        {
+            "match": "([+-]?(?:\\d*\\.\\d+|\\d+\\.\\d*|\\d+)(?:[eE][+-]?\\d+)?)",
+            "captures": {
+                "1": {
+                    "name": "constant.numeric.latte"
+                }
+            }
+        },
+        {
+            "match": "{(?:(\\/)(?:(block|cache|capture|form|label|sep|snippet|spaceless)|(else|first|for|if(?:set|Current)?|last|switch|while))|(?:(l|r|sep|spaceless)|(default|first|last)))}",
+            "captures": {
+                "1": {
+                    "name": "constant.helper.latte"
+                },
+                "2": {
+                    "name": "support.class.macro.latte"
+                },
+                "3": {
+                    "name": "keyword.control.latte"
+                },
+                "4": {
+                    "name": "support.class.macro.latte"
+                },
+                "5": {
+                    "name": "keyword.control.latte"
+                }
+            }
+        },
+        {
+            "match": "(?:{(?:(block|cache|capture|contentType|control|debugbreak|default|define|dump|extends|form|include(?:block)?|input(?:Error)?|label|layout|link|php|plink|snippet(?:Area)?|syntax|var)|(breakIf|case|continueIf|for|(?:else)?ifset|else(?:if)?|if(?:Current)?|switch|while))(?: +(this|parent)| +(#)?([^$'\"{}|=\\s,]+)| *))",
+            "captures": {
+                "1": {
+                    "name": "support.class.macro.latte"
+                },
+                "2": {
+                    "name": "keyword.control.latte"
+                },
+                "3": {
+                    "name": "storage.type.latte"
+                },
+                "4": {
+                    "name": "storage.modifier.reference.latte"
+                },
+                "5": {
+                    "name": "constant.other.latte"
+                }
+            }
+        },
+        {
+            "begin": "{\\*",
+            "end": "\\*}",
+            "name": "comment.block.latte"
+        },
+        {
+            "include": "text.html.basic"
+        }
+    ],
+    "scopeName": "text.html.latte"
+}
