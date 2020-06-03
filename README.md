@@ -1,14 +1,15 @@
 ## VS Code Language extension Nette Latte + Neon for VS Code
 
-* This extension integrates the Latte and Neon Language extension from Nette PHP Framework into Visual Studio Code.
-* Support Colorization and Grammar.
-* Support Snippets.
+### Original extension
 
-### Bugs and Ideas
-* If you found bug or you have an idea, let me now on GitHub :)
-* https://github.com/kasik96/VS-Latte
+* [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Kasik96.latte)
+* [Github repo](https://github.com/kasik96/VS-Latte)
 
-### Thanks to
-* [Nette-Latte-Neon-for-Sublime-Text-3](https://github.com/FilipStryk/Nette-Latte-Neon-for-Sublime-Text-3)
+### Useful links:
 
-**Made with ♥ and VSCode. Enjoy!**
+* [PLIST to JSON converter](http://json2plist.sinaapp.com)
+* [JSON formatter](https://jsonformatter.curiousconcept.com)
+* [CSON to JSON converter](https://cson-json-converter.netlify.app)
+
+### Changelog
+* syntaxes are converted from PLIST to JSON
