@@ -41,11 +41,11 @@
                     "name": "constant.language.latte"
                 },
                 {
-                    "match": "(?<=\\{)(_|breakIf|case|continueIf|contentType|control|debugbreak|default|dump|elseifset|elseif|else|extends|includeblock|include|inputError|input|layout|link|php|plink|r|status|use|var|component|icon|inlineSvg)\\s*",
+                    "match": "(?<=\\{)(_|breakIf|case|continueIf|contentType|control|debugbreak|default|do|dump|elseifset|elseif|else|extends|includeblock|include|inputError|input|layout|link|parameters|php|plink|r|status|sandbox|templatePrint|templateType|use|var|varPrint|varType|component|icon|inlineSvg)\\s*",
                     "name": "keyword.control.single.latte"
                 },
                 {
-                    "match": "(?<=\\{)\/?(block|cache|capture|define|each|first|foreach|form|for|ifset|ifCurrent|if|label|last|loop|l|sep|snippetArea|snippet|switch|syntax|while)\\s*",
+                    "match": "(?<=\\{)\/?(block|cache|capture|define|each|first|foreach|form|for|ifset|ifCurrent|if|label|last|loop|l|sep|snippetArea|snippet|switch|spaceless|syntax|while)\\s*",
                     "name": "keyword.control.pair.latte"
                 },
                 {
