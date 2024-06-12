@@ -41,7 +41,7 @@
                     "name": "constant.language.latte"
                 },
                 {
-                    "match": "(?<=\\{)(_|=|breakIf|case|continueIf|contentType|control|debugbreak|default|do|dump|elseifset|elseif|else|exitIf|extends|includeblock|include|inputError|input|layout|link|parameters|php|plink|r|status|sandbox|templatePrint|templateType|use|var|varPrint|varType|component|icon|inlineSvg|image)\\s*",
+                    "match": "(?<=\\{)(_|=|breakIf|case|continueIf|contentType|control|debugbreak|default|do|dump|elseifset|elseif|else|exitIf|extends|includeblock|include|inputError|input|layout|link|parameters|php|plink|r|status|sandbox|skipIf|templatePrint|templateType|use|var|varPrint|varType|component|icon|inlineSvg|image)\\s*",
                     "name": "keyword.control.single.latte"
                 },
                 {
