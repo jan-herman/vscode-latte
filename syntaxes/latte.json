@@ -45,7 +45,7 @@
                     "name": "keyword.control.single.latte"
                 },
                 {
-                    "match": "(?<=\\{)\/?(block|cache|capture|define|embed|first|foreach|form|for|ifset|ifCurrent|ifchanged|if|label|last|l|sandbox|sep|snippetArea|snippet|switch|syntax|try|iterateWhile|while|each|loop)\\s*",
+                    "match": "(?<=\\{)\/?(block|cache|capture|define|embed|first|foreach|form|for|ifset|ifCurrent|ifchanged|if|label|last|l|sandbox|sep|snippetArea|snippet|spaceless|switch|syntax|try|iterateWhile|while|each|loop)\\s*",
                     "name": "keyword.control.pair.latte"
                 },
                 {
