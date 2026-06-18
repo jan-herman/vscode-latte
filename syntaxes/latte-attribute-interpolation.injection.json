@@ -1,0 +1,89 @@
+{
+    "scopeName": "latte.attribute-interpolation.injection",
+    "injectionSelector": "L:string.quoted.double.html, L:string.quoted.single.html",
+    "patterns": [
+        {
+            "include": "#attribute-interpolation"
+        }
+    ],
+    "repository": {
+        "attribute-interpolation": {
+            "begin": "(?<!\\{)(\\{)(?![\\{\\*])",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                }
+            },
+            "end": "\\}",
+            "endCaptures": {
+                "0": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "source.latte.embedded.html",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#latte-filter"
+                },
+                {
+                    "include": "#latte-variable"
+                },
+                {
+                    "include": "#latte-object-operator"
+                },
+                {
+                    "include": "#method-call"
+                },
+                {
+                    "include": "#property-access"
+                },
+                {
+                    "include": "#latte-bareword"
+                },
+                {
+                    "include": "source.php"
+                }
+            ]
+        },
+        "latte-filter": {
+            "captures": {
+                "1": {
+                    "name": "keyword.other.latte"
+                },
+                "2": {
+                    "name": "keyword.other.latte"
+                }
+            },
+            "match": "(?<!\\|)(\\|)(?!\\|)\\s*([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*\\:[^\\|\\}]*)*"
+        },
+        "latte-variable": {
+            "match": "\\$\\$?[a-zA-Z_0-9]+\\s*",
+            "name": "variable.other.latte"
+        },
+        "latte-object-operator": {
+            "match": "->",
+            "name": "keyword.operator.latte"
+        },
+        "method-call": {
+            "captures": {
+                "1": {
+                    "name": "entity.name.function.php"
+                }
+            },
+            "match": "(?<=->)([a-zA-Z_][a-zA-Z_0-9]*)(?=\\s*\\()",
+            "name": "meta.method-call.php"
+        },
+        "property-access": {
+            "captures": {
+                "1": {
+                    "name": "variable.other.property.php"
+                }
+            },
+            "match": "(?<=->)([a-zA-Z_][a-zA-Z_0-9]*)(?![a-zA-Z_0-9])(?!(?:\\s*\\())"
+        },
+        "latte-bareword": {
+            "match": "\\b(?!(?:abstract|and|array|as|break|callable|case|catch|class|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|enum|eval|exit|extends|false|final|finally|fn|for|foreach|from|function|global|goto|if|implements|include|include_once|in|instanceof|insteadof|interface|isset|list|match|namespace|new|null|or|parent|print|private|protected|public|readonly|require|require_once|return|self|static|switch|throw|trait|true|try|unset|use|var|while|xor|yield)\\b)[a-z][a-zA-Z0-9_]*\\b(?!\\s*(?:\\(|::|->))"
+        }
+    }
+}
