@@ -1,0 +1,32 @@
+{
+    "scopeName": "latte.alpine-interpolation.injection",
+    "injectionSelector": "L:meta.embedded.inline.javascript.latte",
+    "patterns": [
+        {
+            "begin": "\\{\\*",
+            "end": "\\*\\}",
+            "name": "comment.block.latte"
+        },
+        {
+            "begin": "(?<![\\{\\$])(\\{\\{?)(?![\\*\\s'\"])",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                }
+            },
+            "end": "\\/?\\}?\\}",
+            "endCaptures": {
+                "0": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "source.latte.embedded.javascript",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "text.html.latte#latte-expression"
+                }
+            ]
+        }
+    ]
+}

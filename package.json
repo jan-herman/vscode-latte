@@ -65,6 +65,16 @@
 				}
 			},
 			{
+				"scopeName": "latte.alpine-interpolation.injection",
+				"path": "./syntaxes/latte-alpine-interpolation.injection.json",
+				"injectTo": [
+					"text.html.latte"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.inline.php.latte": "php"
+				}
+			},
+			{
 				"scopeName": "latte.n-attribute.injection",
 				"path": "./syntaxes/latte-n-attribute.injection.json",
 				"injectTo": [
