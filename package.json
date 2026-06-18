@@ -55,6 +55,16 @@
 				}
 			},
 			{
+				"scopeName": "latte.alpine-attribute.injection",
+				"path": "./syntaxes/latte-alpine-attribute.injection.json",
+				"injectTo": [
+					"text.html.latte"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.inline.javascript.latte": "javascript"
+				}
+			},
+			{
 				"scopeName": "latte.n-attribute.injection",
 				"path": "./syntaxes/latte-n-attribute.injection.json",
 				"injectTo": [

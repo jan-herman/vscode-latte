@@ -1,0 +1,102 @@
+{
+    "scopeName": "latte.alpine-attribute.injection",
+    "injectionSelector": "L:meta.tag - string.quoted",
+    "patterns": [
+        {
+            "include": "#alpine-double-quoted"
+        },
+        {
+            "include": "#alpine-single-quoted"
+        },
+        {
+            "include": "#alpine-unquoted"
+        },
+        {
+            "include": "#alpine-valueless"
+        }
+    ],
+    "repository": {
+        "alpine-double-quoted": {
+            "begin": "(?<!\\S)((?:x-|:)[a-zA-Z0-9_:\\-.]+)\\s*(=)\\s*(\")",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "3": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "\"|(?=>\\s*$)|$",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.alpine.latte",
+            "contentName": "meta.embedded.inline.javascript.latte",
+            "patterns": [
+                {
+                    "include": "source.js"
+                }
+            ]
+        },
+        "alpine-single-quoted": {
+            "begin": "(?<!\\S)((?:x-|:)[a-zA-Z0-9_:\\-.]+)\\s*(=)\\s*(')",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "3": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "'|(?=>\\s*$)|$",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.alpine.latte",
+            "contentName": "meta.embedded.inline.javascript.latte",
+            "patterns": [
+                {
+                    "include": "source.js"
+                }
+            ]
+        },
+        "alpine-unquoted": {
+            "begin": "(?<!\\S)((?:x-|:)[a-zA-Z0-9_:\\-.]+)\\s*(=)(?=\\s*[^\\s\"'=<>`]+)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "punctuation.separator.key-value.html"
+                }
+            },
+            "end": "(?=\\s|/?>)|$",
+            "name": "meta.attribute.alpine.latte",
+            "contentName": "meta.embedded.inline.javascript.latte",
+            "patterns": [
+                {
+                    "include": "source.js"
+                }
+            ]
+        },
+        "alpine-valueless": {
+            "captures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                }
+            },
+            "match": "(?<!\\S)((?:x-|:)[a-zA-Z0-9_:\\-.]+)(?=\\s|/?>)",
+            "name": "meta.attribute.alpine.latte"
+        }
+    }
+}

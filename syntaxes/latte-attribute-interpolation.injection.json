@@ -1,6 +1,6 @@
 {
     "scopeName": "latte.attribute-interpolation.injection",
-    "injectionSelector": "L:meta.tag - string.quoted, L:string.quoted.double.html, L:string.quoted.single.html",
+    "injectionSelector": "L:meta.tag - string.quoted - meta.attribute.alpine.latte, L:string.quoted.double.html - meta.attribute.alpine.latte, L:string.quoted.single.html - meta.attribute.alpine.latte",
     "patterns": [
         {
             "include": "#double-quoted-attribute"
