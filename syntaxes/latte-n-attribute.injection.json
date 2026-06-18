@@ -548,14 +548,16 @@
                     "include": "text.html.latte#latte-expand-operator"
                 },
                 {
+                    "include": "text.html.latte#latte-static-method-call"
+                },
+                {
                     "include": "text.html.latte#latte-parenthesized-expression"
                 },
                 {
                     "include": "text.html.latte#latte-function-call"
                 },
                 {
-                    "match": "\\?(?!\\?|->)",
-                    "name": "keyword.operator.conditional.latte"
+                    "include": "text.html.latte#latte-conditional-operator"
                 },
                 {
                     "include": "#latte-array"
@@ -592,14 +594,16 @@
                     "include": "text.html.latte#latte-expand-operator"
                 },
                 {
+                    "include": "text.html.latte#latte-static-method-call"
+                },
+                {
                     "include": "text.html.latte#latte-parenthesized-expression"
                 },
                 {
                     "include": "text.html.latte#latte-function-call"
                 },
                 {
-                    "match": "\\?(?!\\?|->)",
-                    "name": "keyword.operator.conditional.latte"
+                    "include": "text.html.latte#latte-conditional-operator"
                 },
                 {
                     "include": "#latte-array"

@@ -130,6 +130,9 @@
                     "include": "#latte-expand-operator"
                 },
                 {
+                    "include": "#latte-static-method-call"
+                },
+                {
                     "include": "#latte-parenthesized-expression"
                 },
                 {
@@ -137,6 +140,9 @@
                 },
                 {
                     "include": "#latte-filter"
+                },
+                {
+                    "include": "#latte-conditional-operator"
                 },
                 {
                     "include": "#latte-number"
@@ -444,6 +450,38 @@
             "match": "\\(\\s*expand\\s*\\)",
             "name": "keyword.operator.spread.latte"
         },
+        "latte-static-method-call": {
+            "begin": "(?<![\\w\\\\$])((?:\\\\?[a-zA-Z_][a-zA-Z_0-9]*\\\\)*)([a-zA-Z_][a-zA-Z_0-9]*)(::)([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+            "beginCaptures": {
+                "1": {
+                    "name": "support.other.namespace.php"
+                },
+                "2": {
+                    "name": "support.class.php"
+                },
+                "3": {
+                    "name": "keyword.operator.class.php"
+                },
+                "4": {
+                    "name": "entity.name.function.php"
+                },
+                "5": {
+                    "name": "punctuation.definition.arguments.begin.bracket.round.php"
+                }
+            },
+            "end": "\\)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.arguments.end.bracket.round.php"
+                }
+            },
+            "name": "meta.method-call.static.php",
+            "patterns": [
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
         "latte-parenthesized-expression": {
             "begin": "\\(",
             "beginCaptures": {
@@ -496,6 +534,10 @@
                 }
             },
             "match": "(?<![\\?\\|])(\\?\\||\\|)(?!\\|)\\s*([a-zA-Z_][a-zA-Z0-9_]*)"
+        },
+        "latte-conditional-operator": {
+            "match": "\\?(?!\\?|->)",
+            "name": "keyword.operator.conditional.latte"
         },
         "latte-unquoted-string": {
             "match": "(?<![\\$>:\\\\\\w.-])(?!(?:and|array|clone|default|false|in|instanceof|new|null|or|return|true|xor|AND|ARRAY|CLONE|DEFAULT|FALSE|IN|INSTANCEOF|NEW|NULL|OR|RETURN|TRUE|XOR)\\b)(?![A-Z_]+\\b)(?:[\\p{L}_][\\p{L}\\p{N}_.-]*[\\p{L}\\p{N}_.]|[\\p{L}_]|[^\\x00-\\x7F\\s,\\[\\]\\(\\)\\{\\}:|?=<>!+\\/*'\"`.-]+)(?![\\p{L}\\p{N}_.-])(?!\\s*(?:\\(|::|->))",
