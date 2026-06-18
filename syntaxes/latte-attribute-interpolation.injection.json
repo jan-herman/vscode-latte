@@ -14,7 +14,7 @@
     ],
     "repository": {
         "double-quoted-attribute": {
-            "begin": "(?<!\\S)(?!n:)([a-zA-Z_][-a-zA-Z0-9_:.]*)\\s*(=)\\s*(\")(?=[^\"\\n]*(?<!\\{)\\{(?![\\{\\*\\s]))",
+            "begin": "(?<!\\S)(?!n:)([a-zA-Z_][-a-zA-Z0-9_:.]*)\\s*(=)\\s*(\")(?=[^\"\\n]*(?<!\\{)\\{(?![\\{\\*\\s'\"]))",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -44,7 +44,7 @@
             ]
         },
         "single-quoted-attribute": {
-            "begin": "(?<!\\S)(?!n:)([a-zA-Z_][-a-zA-Z0-9_:.]*)\\s*(=)\\s*(')(?=[^'\\n]*(?<!\\{)\\{(?![\\{\\*\\s]))",
+            "begin": "(?<!\\S)(?!n:)([a-zA-Z_][-a-zA-Z0-9_:.]*)\\s*(=)\\s*(')(?=[^'\\n]*(?<!\\{)\\{(?![\\{\\*\\s'\"]))",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -74,7 +74,7 @@
             ]
         },
         "attribute-interpolation": {
-            "begin": "(?<!\\{)(\\{)(?![\\{\\*])",
+            "begin": "(?<!\\{)(\\{)(?![\\{\\*\\s'\"])",
             "beginCaptures": {
                 "1": {
                     "name": "tag.begin.latte"
@@ -90,43 +90,7 @@
             "contentName": "meta.embedded.inline.php.latte",
             "patterns": [
                 {
-                    "include": "text.html.latte#latte-tag-bang"
-                },
-                {
-                    "include": "text.html.latte#php-block-comment"
-                },
-                {
-                    "include": "text.html.latte#latte-control-single"
-                },
-                {
-                    "include": "text.html.latte#latte-control-pair"
-                },
-                {
-                    "include": "text.html.latte#latte-block-name"
-                },
-                {
-                    "include": "text.html.latte#latte-filter"
-                },
-                {
-                    "include": "text.html.latte#latte-variable"
-                },
-                {
-                    "include": "text.html.latte#latte-object-operator"
-                },
-                {
-                    "include": "text.html.latte#method-call"
-                },
-                {
-                    "include": "text.html.latte#property-access"
-                },
-                {
-                    "include": "text.html.latte#strings"
-                },
-                {
-                    "include": "text.html.latte#latte-bareword"
-                },
-                {
-                    "include": "source.php"
+                    "include": "text.html.latte#latte-expression"
                 }
             ]
         }
