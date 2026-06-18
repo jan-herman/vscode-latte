@@ -15,6 +15,18 @@
             "include": "#smart-attribute-curly"
         },
         {
+            "include": "#n-class-double-quoted-multiline"
+        },
+        {
+            "include": "#n-class-single-quoted-multiline"
+        },
+        {
+            "include": "#n-attribute-double-quoted-multiline"
+        },
+        {
+            "include": "#n-attribute-single-quoted-multiline"
+        },
+        {
             "include": "#n-class-double-quoted"
         },
         {
@@ -266,6 +278,138 @@
                 }
             ]
         },
+        "n-class-double-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)(class)\\s*(=)\\s*(\")(?=\\s*$)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "4": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "\"",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#n-class-value"
+                }
+            ]
+        },
+        "n-class-single-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)(class)\\s*(=)\\s*(')(?=\\s*$)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "4": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "'",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#n-class-value"
+                }
+            ]
+        },
+        "n-attribute-double-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)([a-zA-Z0-9\\-_]+)(?:\\:([a-zA-Z\\-_]+))?(?:\\.([a-zA-Z\\-_]+))*\\s*(=)\\s*(\")(?=\\s*$)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "4": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "5": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "6": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "\"",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
+        "n-attribute-single-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)([a-zA-Z0-9\\-_]+)(?:\\:([a-zA-Z\\-_]+))?(?:\\.([a-zA-Z\\-_]+))*\\s*(=)\\s*(')(?=\\s*$)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "4": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "5": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "6": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
+            },
+            "end": "'",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
         "n-attribute-double-quoted": {
             "begin": "(?<!\\S)(?:(n:)|(:|@|#))([a-zA-Z0-9\\-_]+)(?:\\:([a-zA-Z\\-_]+))?(?:\\.([a-zA-Z\\-_]+))*\\s*(=)\\s*(\")",
             "beginCaptures": {
@@ -458,7 +602,7 @@
                     "name": "punctuation.separator.key-value.latte"
                 }
             },
-            "match": "(?:\\G|(?<=[\\[,]))\\s*([a-zA-Z_][a-zA-Z0-9_-]*)(\\s*:)(?!:)"
+            "match": "(?:^|\\G|(?<=[\\[,]))\\s*([a-zA-Z_][a-zA-Z0-9_-]*)(\\s*:)(?!:)"
         },
         "method-call": {
             "captures": {
