@@ -94,6 +94,51 @@
                     "include": "#php-block-comment"
                 },
                 {
+                    "include": "#latte-control-single"
+                },
+                {
+                    "include": "#latte-control-pair"
+                },
+                {
+                    "include": "#latte-content-type"
+                },
+                {
+                    "include": "#latte-block-name"
+                },
+                {
+                    "include": "#latte-nullable-type"
+                },
+                {
+                    "include": "#latte-named-argument-leading"
+                },
+                {
+                    "include": "#latte-named-argument-after-comma"
+                },
+                {
+                    "include": "#latte-filter-named-argument"
+                },
+                {
+                    "include": "#latte-include-modifier"
+                },
+                {
+                    "include": "#latte-array"
+                },
+                {
+                    "include": "#latte-array-key"
+                },
+                {
+                    "include": "#latte-expand-operator"
+                },
+                {
+                    "include": "#latte-parenthesized-expression"
+                },
+                {
+                    "include": "#latte-function-call"
+                },
+                {
+                    "include": "#latte-filter"
+                },
+                {
                     "include": "#latte-number"
                 },
                 {
@@ -101,15 +146,6 @@
                 },
                 {
                     "include": "#latte-constant-language"
-                },
-                {
-                    "include": "#latte-control-single"
-                },
-                {
-                    "include": "#latte-control-pair"
-                },
-                {
-                    "include": "#latte-block-name"
                 },
                 {
                     "include": "#latte-operator"
@@ -122,27 +158,6 @@
                 },
                 {
                     "include": "#property-access"
-                },
-                {
-                    "include": "#latte-nullable-type"
-                },
-                {
-                    "include": "#latte-named-argument-leading"
-                },
-                {
-                    "include": "#latte-named-argument-after-comma"
-                },
-                {
-                    "include": "#latte-array"
-                },
-                {
-                    "include": "#latte-array-key"
-                },
-                {
-                    "include": "#latte-expand-operator"
-                },
-                {
-                    "include": "#latte-filter"
                 },
                 {
                     "include": "#latte-unquoted-string"
@@ -275,20 +290,52 @@
             "name": "constant.language.latte"
         },
         "latte-control-single": {
-            "match": "(?<=\\{)(_|=|breakIf|case|continueIf|contentType|control|debugbreak|default|do|dump|elseifset|elseif|else|exitIf|extends|import|includeblock|include|inputError|input|layout|link|parameters|php|plink|r|status|sandbox|skipIf|templatePrint|templateType|trace|use|var|varPrint|varType|component|icon|inlineSvg|image)\\s*",
+            "match": "(?<=\\{)(?:_|=|(?:asset|breakIf|case|continueIf|contentType|control|debugbreak|default|do|dump|elseifset|elseif|else|exitIf|extends|import|includeblock|include|inputError|input|layout|linkBase|link|l|parameters|php|plink|preload|r|rollback|status|sandbox|skipIf|templatePrint|templateType|trace|use|var|varPrint|varType|component|icon|inlineSvg|image)(?=\\s|\\}|/\\}|\\|))",
             "name": "keyword.control.single.latte"
         },
         "latte-control-pair": {
-            "match": "(?<=\\{)\/?(block|cache|capture|define|embed|first|foreach|form|for|ifset|ifCurrent|ifchanged|if|label|last|l|sandbox|sep|snippetArea|snippet|spaceless|switch|syntax|try|iterateWhile|while|each|loop)\\s*",
+            "match": "(?<=\\{)\/?(block|cache|capture|define|embed|first|foreach|formContainer|form|for|ifset|ifCurrent|ifchanged|if|label|last|sandbox|sep|snippetArea|snippet|spaceless|switch|syntax|translate|try|iterateWhile|while|each|loop)(?=\\s|\\}|/\\}|\\|)",
             "name": "keyword.control.pair.latte"
         },
+        "latte-content-type": {
+            "match": "(?<=\\{contentType\\s)([a-zA-Z][a-zA-Z0-9.+-]*/[a-zA-Z0-9.+-]+|html|xml|javascript|css|calendar|text)\\b",
+            "name": "constant.language.content-type.latte"
+        },
         "latte-block-name": {
-            "captures": {
-                "1": {
-                    "name": "entity.name.section.latte"
+            "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.section.latte"
+                        }
+                    },
+                    "match": "(?<=\\{block\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.section.latte"
+                        }
+                    },
+                    "match": "(?<=\\{define\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.section.latte"
+                        }
+                    },
+                    "match": "(?<=\\{include\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.section.latte"
+                        }
+                    },
+                    "match": "(?<=\\{ifset\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
                 }
-            },
-            "match": "(?<=\\{block\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
+            ]
         },
         "latte-operator": {
             "match": "(?<=\\s)(\\!|\/|===|as\\b|in\\b|and\\b|AND\\b|And\\b|&&|or\\b|OR\\b|Or\\b|\\|\\||\\+\\+|\\-\\-|==|<=>|>=|<=)\\s?",
@@ -324,7 +371,7 @@
                     "name": "storage.type.php"
                 }
             },
-            "match": "(?:(\\?)(?!->))?(\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*)(?=\\s+(?:\\$|\\.\\.\\.\\$))"
+            "match": "(?:(\\?)(?!->))?(?!(?:as|in|and|or|xor|AS|IN|AND|OR|XOR)\\b)((?:\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*)(?:\\s*[|&]\\s*\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*)*)(?=\\s+(?:\\$|\\.\\.\\.\\$))"
         },
         "latte-named-argument-leading": {
             "captures": {
@@ -347,6 +394,21 @@
                 }
             },
             "match": "(?<=,)\\s*([a-zA-Z_][a-zA-Z0-9_]*)(\\s*:)(?!:)"
+        },
+        "latte-filter-named-argument": {
+            "captures": {
+                "1": {
+                    "name": "variable.parameter.latte"
+                },
+                "2": {
+                    "name": "punctuation.separator.key-value.latte"
+                }
+            },
+            "match": "(?<=:)\\s*([a-zA-Z_][a-zA-Z0-9_]*)(\\s*:)(?!:)"
+        },
+        "latte-include-modifier": {
+            "match": "(?<=\\s)(with|blocks|from)(?=\\s|\\})",
+            "name": "keyword.other.modifier.latte"
         },
         "latte-array-key": {
             "captures": {
@@ -382,6 +444,48 @@
             "match": "\\(\\s*expand\\s*\\)",
             "name": "keyword.operator.spread.latte"
         },
+        "latte-parenthesized-expression": {
+            "begin": "\\(",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.begin.bracket.round.php"
+                }
+            },
+            "end": "\\)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.end.bracket.round.php"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
+        "latte-function-call": {
+            "begin": "(?<!->)(?<!::)\\b(?!fn\\b)([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.name.function.php"
+                },
+                "2": {
+                    "name": "punctuation.definition.arguments.begin.bracket.round.php"
+                }
+            },
+            "end": "\\)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.arguments.end.bracket.round.php"
+                }
+            },
+            "name": "meta.function-call.php",
+            "patterns": [
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
         "latte-filter": {
             "captures": {
                 "1": {
@@ -391,7 +495,7 @@
                     "name": "keyword.other.latte"
                 }
             },
-            "match": "(?<![\\?\\|])(\\?\\||\\|)(?!\\|)\\s*([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*\\:[^\\|\\}]*)*"
+            "match": "(?<![\\?\\|])(\\?\\||\\|)(?!\\|)\\s*([a-zA-Z_][a-zA-Z0-9_]*)"
         },
         "latte-unquoted-string": {
             "match": "(?<![\\$>:\\\\\\w.-])(?!(?:and|array|clone|default|false|in|instanceof|new|null|or|return|true|xor|AND|ARRAY|CLONE|DEFAULT|FALSE|IN|INSTANCEOF|NEW|NULL|OR|RETURN|TRUE|XOR)\\b)(?![A-Z_]+\\b)(?:[\\p{L}_][\\p{L}\\p{N}_.-]*[\\p{L}\\p{N}_.]|[\\p{L}_]|[^\\x00-\\x7F\\s,\\[\\]\\(\\)\\{\\}:|?=<>!+\\/*'\"`.-]+)(?![\\p{L}\\p{N}_.-])(?!\\s*(?:\\(|::|->))",

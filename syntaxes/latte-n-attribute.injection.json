@@ -539,10 +539,19 @@
                     "include": "text.html.latte#latte-filter"
                 },
                 {
+                    "include": "text.html.latte#latte-filter-named-argument"
+                },
+                {
                     "include": "text.html.latte#latte-operator"
                 },
                 {
                     "include": "text.html.latte#latte-expand-operator"
+                },
+                {
+                    "include": "text.html.latte#latte-parenthesized-expression"
+                },
+                {
+                    "include": "text.html.latte#latte-function-call"
                 },
                 {
                     "match": "\\?(?!\\?|->)",
@@ -574,10 +583,19 @@
                     "include": "text.html.latte#latte-filter"
                 },
                 {
+                    "include": "text.html.latte#latte-filter-named-argument"
+                },
+                {
                     "include": "text.html.latte#latte-operator"
                 },
                 {
                     "include": "text.html.latte#latte-expand-operator"
+                },
+                {
+                    "include": "text.html.latte#latte-parenthesized-expression"
+                },
+                {
+                    "include": "text.html.latte#latte-function-call"
                 },
                 {
                     "match": "\\?(?!\\?|->)",
