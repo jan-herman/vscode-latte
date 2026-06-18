@@ -16,7 +16,7 @@
                     "name": "tag.begin.latte"
                 }
             ],
-            "end": "\\}?\\}",
+            "end": "\\/?\\}?\\}",
             "endCaptures": [
                 {
                     "name": "tag.end.latte"
