@@ -533,6 +533,9 @@
         "n-class-value": {
             "patterns": [
                 {
+                    "include": "text.html.latte#php-block-comment"
+                },
+                {
                     "match": "\\?(?!\\?|->)",
                     "name": "keyword.operator.conditional.latte"
                 },
@@ -555,6 +558,9 @@
         },
         "latte-expression": {
             "patterns": [
+                {
+                    "include": "text.html.latte#php-block-comment"
+                },
                 {
                     "include": "text.html.latte#latte-filter"
                 },
