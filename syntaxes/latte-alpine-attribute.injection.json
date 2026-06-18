@@ -12,6 +12,9 @@
             "include": "#alpine-unquoted"
         },
         {
+            "include": "#alpine-pending-value"
+        },
+        {
             "include": "#alpine-valueless"
         }
     ],
@@ -88,6 +91,18 @@
                     "include": "source.js"
                 }
             ]
+        },
+        "alpine-pending-value": {
+            "captures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "punctuation.separator.key-value.html"
+                }
+            },
+            "match": "(?<!\\S)((?:x-|:)[a-zA-Z0-9_:\\-.]+)\\s*(=)(?=\\s*(?:/?>|$))",
+            "name": "meta.attribute.alpine.latte"
         },
         "alpine-valueless": {
             "captures": {
