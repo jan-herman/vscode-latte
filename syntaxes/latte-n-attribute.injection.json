@@ -543,10 +543,10 @@
                     "include": "#n-class-literal"
                 },
                 {
-                    "include": "#method-call"
+                    "include": "text.html.latte#method-call"
                 },
                 {
-                    "include": "#property-access"
+                    "include": "text.html.latte#property-access"
                 },
                 {
                     "include": "source.php"
@@ -556,7 +556,7 @@
         "latte-expression": {
             "patterns": [
                 {
-                    "include": "#latte-filter"
+                    "include": "text.html.latte#latte-filter"
                 },
                 {
                     "match": "\\?(?!\\?|->)",
@@ -572,26 +572,15 @@
                     "include": "#latte-unquoted-string"
                 },
                 {
-                    "include": "#method-call"
+                    "include": "text.html.latte#method-call"
                 },
                 {
-                    "include": "#property-access"
+                    "include": "text.html.latte#property-access"
                 },
                 {
                     "include": "source.php"
                 }
             ]
-        },
-        "latte-filter": {
-            "captures": {
-                "1": {
-                    "name": "keyword.other.latte"
-                },
-                "2": {
-                    "name": "keyword.other.latte"
-                }
-            },
-            "match": "(?<!\\|)(\\|)(?!\\|)\\s*([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*\\:[^\\|\\}]*)*"
         },
         "latte-array-key": {
             "captures": {
@@ -603,23 +592,6 @@
                 }
             },
             "match": "(?:^|\\G|(?<=[\\[,]))\\s*([a-zA-Z_][a-zA-Z0-9_-]*)(\\s*:)(?!:)"
-        },
-        "method-call": {
-            "captures": {
-                "1": {
-                    "name": "entity.name.function.php"
-                }
-            },
-            "match": "(?<=->)([a-zA-Z_][a-zA-Z_0-9]*)(?=\\s*\\()",
-            "name": "meta.method-call.php"
-        },
-        "property-access": {
-            "captures": {
-                "1": {
-                    "name": "variable.other.property.php"
-                }
-            },
-            "match": "(?<=->)([a-zA-Z_][a-zA-Z_0-9]*)(?![a-zA-Z_0-9])(?!(?:\\s*\\())"
         },
         "latte-array": {
             "begin": "\\[",
