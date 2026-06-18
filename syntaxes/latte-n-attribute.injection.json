@@ -548,9 +548,6 @@
                     "include": "text.html.latte#latte-expand-operator"
                 },
                 {
-                    "include": "text.html.latte#latte-static-method-call"
-                },
-                {
                     "include": "text.html.latte#latte-parenthesized-expression"
                 },
                 {
@@ -564,12 +561,6 @@
                 },
                 {
                     "include": "#n-class-literal"
-                },
-                {
-                    "include": "text.html.latte#method-call"
-                },
-                {
-                    "include": "text.html.latte#property-access"
                 },
                 {
                     "include": "source.php"
@@ -594,9 +585,6 @@
                     "include": "text.html.latte#latte-expand-operator"
                 },
                 {
-                    "include": "text.html.latte#latte-static-method-call"
-                },
-                {
                     "include": "text.html.latte#latte-parenthesized-expression"
                 },
                 {
@@ -613,12 +601,6 @@
                 },
                 {
                     "include": "text.html.latte#latte-unquoted-string"
-                },
-                {
-                    "include": "text.html.latte#method-call"
-                },
-                {
-                    "include": "text.html.latte#property-access"
                 },
                 {
                     "include": "source.php"
