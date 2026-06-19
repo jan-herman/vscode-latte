@@ -12,11 +12,11 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/jan_herman/VS-Latte.git"
+		"url": "https://github.com/jan-herman/vscode-latte.git"
 	},
-	"homepage": "https://gitlab.com/jan_herman/VS-Latte",
+	"homepage": "https://github.com/jan-herman/vscode-latte",
 	"bugs": {
-		"url": "https://gitlab.com/jan_herman/VS-Latte/-/issues"
+		"url": "https://github.com/jan-herman/vscode-latte/issues"
 	},
 	"engines": {
 		"vscode": "^1.80.0"
