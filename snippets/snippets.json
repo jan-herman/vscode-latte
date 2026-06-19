@@ -1,527 +1,527 @@
 {
-	"block": {
+	"Latte tag: block": {
 		"prefix": "block",
 		"body": "{block ${1:content}}\n\t$0\n{/block}",
-		"description": "Latte named block"
+		"description": "Latte tag: Defines a named block: {block name}...{/block}."
 	},
-	"block local": {
+	"Latte tag: local block": {
 		"prefix": "block",
 		"body": "{block local ${1:content}}\n\t$0\n{/block}",
-		"description": "Latte local block"
+		"description": "Latte tag: Defines a local block: {block local name}...{/block}."
 	},
-	"sandbox": {
+	"Latte tag: sandbox": {
 		"prefix": "sandbox",
 		"body": "{sandbox '${1:untrusted_example.latte}'}\n",
-		"description": "Render an untrusted template in sandbox mode"
+		"description": "Latte tag: Renders an untrusted template in sandbox mode: {sandbox file}."
 	},
-	"try": {
+	"Latte tag: try": {
 		"prefix": "try",
 		"body": "{try}\n\t$0\n{/try}",
-		"description": "Latte try block"
+		"description": "Latte tag: Starts a recoverable try block: {try}...{/try}."
 	},
-	"rollback": {
+	"Latte tag: rollback": {
 		"prefix": "rollback",
 		"body": "{rollback}$0",
-		"description": "Rollback a Latte try block"
+		"description": "Latte tag: Rolls back output inside a {try} block."
 	},
-	"embed": {
+	"Latte tag: embed": {
 		"prefix": "embed",
 		"body": "{embed '${1:template.latte}'}\n\t$0\n{/embed}",
-		"description": "Embed a template and override blocks"
+		"description": "Latte tag: Embeds a template and allows block overrides: {embed file}...{/embed}."
 	},
-	"snippet": {
+	"Latte tag: snippet": {
 		"prefix": "snippet",
 		"body": "{snippet ${1:content}}\n\t$0\n{/snippet}",
-		"description": "Latte AJAX snippet block"
+		"description": "Latte tag: Defines an AJAX snippet block: {snippet name}...{/snippet}."
 	},
-	"import": {
+	"Latte include: import": {
 		"prefix": "import",
 		"body": "{import '${1:../@layout.latte}'}\n$0",
-		"description": "Import blocks from another template"
+		"description": "Latte tag: Imports blocks from another template: {import file}."
 	},
-	"layout": {
+	"Latte include: layout": {
 		"prefix": "layout",
 		"body": "{layout '${1:../@layout.latte}'}\n$0",
-		"description": "Set the layout template"
+		"description": "Latte tag: Selects the layout template: {layout file}."
 	},
-	"extends": {
+	"Latte include: extends": {
 		"prefix": "extends",
 		"body": "{extends '${1:../@layout.latte}'}\n$0",
-		"description": "Extend another template"
+		"description": "Latte tag: Extends another template: {extends file}."
 	},
-	"capture": {
+	"Latte tag: capture": {
 		"prefix": "capture",
 		"body": "{capture \\$${1:var}}\n\t$0\n{/capture}",
-		"description": "Capture rendered output into a variable"
+		"description": "Latte tag: Captures rendered output into a variable: {capture $var}...{/capture}."
 	},
-	"define": {
+	"Latte tag: define": {
 		"prefix": "define",
 		"body": "{define ${1:content}}\n\t$0\n{/define}",
-		"description": "Define a reusable block"
+		"description": "Latte tag: Defines a reusable block: {define name}...{/define}."
 	},
-	"include": {
+	"Latte include: block reference": {
 		"prefix": "include",
 		"body": "{include #${1:content}}\n$0",
-		"description": "Include a block"
+		"description": "Latte tag: Includes a block by name: {include #block}."
 	},
-	"include block": {
+	"Latte include: named block": {
 		"prefix": "include",
 		"body": "{include block '${1:foo}'}\n$0",
-		"description": "Include a named block"
+		"description": "Latte tag: Includes a named block: {include block name}."
 	},
-	"include file": {
+	"Latte include: template file": {
 		"prefix": "include",
 		"body": "{include file '${1:foo}'}\n$0",
-		"description": "Include a template file"
+		"description": "Latte tag: Includes another template file: {include file}."
 	},
-	"include from": {
+	"Latte include: block from template": {
 		"prefix": "include",
 		"body": "{include block from '${1:template.latte}'}\n$0",
-		"description": "Include a block from another template"
+		"description": "Latte tag: Includes a block from another template: {include block from file}."
 	},
-	"foreach": {
+	"Latte flow: foreach": {
 		"prefix": "foreach",
 		"body": "{foreach \\$${1:items} as \\$${2:item}}\n\t$0\n{/foreach}",
-		"description": "Loop over items"
+		"description": "Latte flow: Loops over items: {foreach $items as $item}...{/foreach}."
 	},
-	"while": {
+	"Latte flow: while": {
 		"prefix": "while",
 		"body": "{while \\$${1:item} = \\$${2:items}->fetch()}\n\t$0\n{/while}",
-		"description": "Latte while loop"
+		"description": "Latte flow: Repeats while an expression is truthy: {while ...}...{/while}."
 	},
-	"iterateWhile": {
+	"Latte flow: iterateWhile": {
 		"prefix": "iterateWhile",
 		"body": "{iterateWhile}\n\t$0\n{/while}",
-		"description": "Continue a foreach-style iteration"
+		"description": "Latte flow: Continues iteration with {iterateWhile} inside a loop."
 	},
-	"for": {
+	"Latte flow: for": {
 		"prefix": "for",
 		"body": "{for \\$${1:i} = 0; \\$${1:i} < ${2:10}; \\$${1:i}++}\n\t$0\n{/for}",
-		"description": "Latte for loop"
+		"description": "Latte flow: Creates a counted loop: {for $i = 0; ...}...{/for}."
 	},
-	"first": {
+	"Latte flow: first": {
 		"prefix": "first",
 		"body": "{first}\n\t$0\n{/first}",
-		"description": "Render content only on first iteration"
+		"description": "Latte flow: Renders content only on the first loop iteration: {first}...{/first}."
 	},
-	"last": {
+	"Latte flow: last": {
 		"prefix": "last",
 		"body": "{last}\n\t$0\n{/last}",
-		"description": "Render content only on last iteration"
+		"description": "Latte flow: Renders content only on the last loop iteration: {last}...{/last}."
 	},
-	"sep": {
+	"Latte flow: separator": {
 		"prefix": "sep",
 		"body": "{sep}\n\t$0\n{/sep}",
-		"description": "Render separator content between iterations"
+		"description": "Latte flow: Renders separator content between loop items: {sep}...{/sep}."
 	},
-	"continueIf": {
+	"Latte flow: continueIf": {
 		"prefix": "continueIf",
 		"body": "{continueIf \\$${1:condition}}$0",
-		"description": "Continue loop when condition is true"
+		"description": "Latte flow: Continues the loop when a condition is true: {continueIf $cond}."
 	},
-	"skipIf": {
+	"Latte flow: skipIf": {
 		"prefix": "skipIf",
 		"body": "{skipIf \\$${1:condition}}$0",
-		"description": "Skip rendering when condition is true"
+		"description": "Latte flow: Skips rendering when a condition is true: {skipIf $cond}."
 	},
-	"switch": {
+	"Latte flow: switch": {
 		"prefix": "switch",
 		"body": "{switch ${1:expression}}\n\t{case ${2:value}}\n\t\t$0\n{/switch}",
-		"description": "Latte switch block"
+		"description": "Latte flow: Creates a switch block with cases: {switch expr}...{/switch}."
 	},
-	"breakIf": {
+	"Latte flow: breakIf": {
 		"prefix": "breakIf",
 		"body": "{breakIf \\$${1:condition}}$0",
-		"description": "Break loop when condition is true"
+		"description": "Latte flow: Breaks the loop when a condition is true: {breakIf $cond}."
 	},
-	"if": {
+	"Latte flow: if": {
 		"prefix": "if",
 		"body": "{if \\$${1:condition}}\n\t$0\n{/if}",
-		"description": "Latte if block"
+		"description": "Latte flow: Renders content conditionally: {if $cond}...{/if}."
 	},
-	"ifset": {
+	"Latte flow: ifset": {
 		"prefix": "ifset",
 		"body": "{ifset \\$${1:var}}\n\t$0\n{/ifset}",
-		"description": "Render when value is set"
+		"description": "Latte flow: Renders when a value is set: {ifset $var}...{/ifset}."
 	},
-	"ifchanged": {
+	"Latte flow: ifchanged": {
 		"prefix": "ifchanged",
 		"body": "{ifchanged ${1:expression}}\n\t$0\n{/ifchanged}",
-		"description": "Render when expression changes"
+		"description": "Latte flow: Renders when an expression changes: {ifchanged expr}...{/ifchanged}."
 	},
-	"cache": {
+	"Latte tag: cache": {
 		"prefix": "cache",
 		"body": "{cache \\$${1:key}}\n\t$0\n{/cache}",
-		"description": "Cache rendered template output"
+		"description": "Latte tag: Caches rendered output: {cache key}...{/cache}."
 	},
-	"default": {
+	"Latte variable: default": {
 		"prefix": "default",
 		"body": "{default \\$${1:foo} = ${2:''}}$0",
-		"description": "Set a default template variable"
+		"description": "Latte tag: Defines a default template variable: {default $name = value}."
 	},
-	"link": {
+	"Nette link: link": {
 		"prefix": "link",
 		"body": "{link ${1:Default}}\n$0",
-		"description": "Create a presenter link"
+		"description": "Nette tag: Creates a presenter link: {link Destination}."
 	},
-	"plink": {
+	"Nette link: plink": {
 		"prefix": "plink",
 		"body": "{plink ${1:Default}}\n$0",
-		"description": "Create an absolute presenter link"
+		"description": "Nette tag: Creates an absolute presenter link: {plink Destination}."
 	},
-	"control": {
+	"Nette component: control": {
 		"prefix": "control",
 		"body": "{control ${1:exampleSignForm}}\n$0",
-		"description": "Render a Nette control"
+		"description": "Nette tag: Renders a component/control: {control name}."
 	},
-	"form": {
+	"Nette form: form": {
 		"prefix": "form",
 		"body": "{form ${1:exampleSignForm}}\n\t$0\n{/form}",
-		"description": "Render a Nette form"
+		"description": "Nette form: Renders a form block: {form name}...{/form}."
 	},
-	"formPrint": {
+	"Nette form: formPrint": {
 		"prefix": "formPrint",
 		"body": "{formPrint ${1:exampleSignForm}}",
-		"description": "Print a Nette form"
+		"description": "Nette form: Prints a complete form: {formPrint name}."
 	},
-	"varPrint": {
+	"Latte type: varPrint": {
 		"prefix": "varPrint",
 		"body": "{varPrint ${1:example}}\n",
-		"description": "Print variable type information"
+		"description": "Latte type: Prints inferred template variables: {varPrint name}."
 	},
-	"var": {
+	"Latte variable: var": {
 		"prefix": "var",
 		"body": "{var \\$${1:name} = 'John Smith'}\n",
-		"description": "Declare a template variable"
+		"description": "Latte tag: Declares a template variable: {var $name = value}."
 	},
-	"parameters": {
+	"Latte type: parameters": {
 		"prefix": "parameters",
 		"body": "{parameters \n\t${1:?string} \\$${2:name},$0\n}",
-		"description": "Declare template parameters"
+		"description": "Latte type: Declares template parameters: {parameters type $name}."
 	},
-	"varType": {
+	"Latte type: varType": {
 		"prefix": "varType",
 		"body": "{varType ${1:string} \\$${2:lang}}\n",
-		"description": "Annotate a template variable type"
+		"description": "Latte type: Annotates a variable type: {varType type $var}."
 	},
-	"templateType": {
+	"Latte type: templateType": {
 		"prefix": "templateType",
 		"body": "{templateType ${1:App\\Presenter\\ExampleDefaultTemplate}}\n",
-		"description": "Annotate the template parameter class"
+		"description": "Latte type: Annotates the template parameter class: {templateType Class}."
 	},
-	"templatePrint": {
+	"Latte type: templatePrint": {
 		"prefix": "templatePrint",
 		"body": "{templatePrint ${1:App\\Presenter\\ExampleDefaultTemplate}}\n",
-		"description": "Generate template type information"
+		"description": "Latte type: Generates template type information: {templatePrint Class}."
 	},
-	"label": {
+	"Nette form: label": {
 		"prefix": "label",
 		"body": "{label ${1:foo} /}\n",
-		"description": "Render a form label"
+		"description": "Nette form: Renders a form label: {label field /}."
 	},
-	"input": {
+	"Nette form: input": {
 		"prefix": "input",
 		"body": "{input ${1:foo}}\n",
-		"description": "Render a form input"
+		"description": "Nette form: Renders a form input: {input field}."
 	},
-	"syntax": {
+	"Latte tag: syntax": {
 		"prefix": "syntax",
 		"body": "{syntax ${1:mode}}\n\t$0\n{/syntax}",
-		"description": "Switch Latte syntax mode"
+		"description": "Latte tag: Switches Latte syntax mode: {syntax mode}...{/syntax}."
 	},
-	"spaceless": {
+	"Latte tag: spaceless": {
 		"prefix": "spaceless",
 		"body": "{spaceless}\n\t$0\n{/spaceless}",
-		"description": "Remove whitespace between HTML tags"
+		"description": "Latte tag: Removes whitespace between HTML tags: {spaceless}...{/spaceless}."
 	},
-	"l": {
+	"Latte escape: left brace": {
 		"prefix": "l",
 		"body": "{l}$0",
-		"description": "Print a literal opening brace"
+		"description": "Latte tag: Prints a literal opening brace with {l}."
 	},
-	"r": {
+	"Latte escape: right brace": {
 		"prefix": "r",
 		"body": "{r}$0",
-		"description": "Print a literal closing brace"
+		"description": "Latte tag: Prints a literal closing brace with {r}."
 	},
-	"comment": {
+	"Latte comment: block comment": {
 		"prefix": "comment",
 		"body": "{* ${1:comment} *}$0",
-		"description": "Latte block comment"
+		"description": "Latte comment: Inserts a Latte block comment: {* comment *}."
 	},
-	"translator": {
+	"Latte translator: message": {
 		"prefix": "_",
 		"body": "{_'${1:text}'}$0",
-		"description": "Translate a message"
+		"description": "Latte tag: Translates a message with {_'message'}."
 	},
-	"translator with context": {
+	"Latte translator: message with context": {
 		"prefix": "_",
 		"body": "{_'${1:text}', ${2:context}}$0",
-		"description": "Translate a message with context"
+		"description": "Latte tag: Translates a message with context: {_'message', context}."
 	},
-	"ternary": {
+	"Latte expression: ternary": {
 		"prefix": "tern",
 		"body": "{\\$${1:condition} ? ${2:'yes'} : ${3:'no'}}$0",
-		"description": "Latte ternary expression"
+		"description": "Latte expression: Inserts a ternary output expression: {$cond ? a : b}."
 	},
-	"contentType": {
+	"Latte output: contentType": {
 		"prefix": "contentType",
 		"body": "{contentType ${1:application/xml}}\n$0",
-		"description": "Set output content type"
+		"description": "Latte tag: Sets the output content type: {contentType application/xml}."
 	},
-	"status": {
+	"Latte output: status": {
 		"prefix": "status",
 		"body": "{status ${1:500}}\n$0",
-		"description": "Set HTTP response status"
+		"description": "Latte tag: Sets the HTTP response status: {status 500}."
 	},
-	"do": {
+	"Latte expression: do": {
 		"prefix": "do",
 		"body": "{do ${1:code}}",
-		"description": "Execute Latte expression without output"
+		"description": "Latte tag: Executes an expression without output: {do expr}."
 	},
-	"dump": {
+	"Latte debug: dump": {
 		"prefix": "dump",
 		"body": "{dump \\$${1:var}}\n$0",
-		"description": "Dump a variable for debugging"
+		"description": "Latte debug: Dumps a variable for debugging: {dump $var}."
 	},
-	"php": {
+	"Latte tag: php": {
 		"prefix": "php",
 		"body": "{php ${1:code}}\n$0",
-		"description": "Run PHP code in a Latte tag"
+		"description": "Latte tag: Runs PHP-like code inside a Latte tag: {php code}."
 	},
-	"debugbreak": {
+	"Latte debug: debugbreak": {
 		"prefix": "debugbreak",
 		"body": "{debugbreak \\$${1:condition}}\n$0",
-		"description": "Trigger a debug break conditionally"
+		"description": "Latte debug: Triggers a debugger break conditionally: {debugbreak $cond}."
 	},
-	"clamp": {
+	"Latte function: clamp": {
 		"prefix": "clamp",
 		"body": "{=clamp(${1:level}, ${2:0}, ${3:255})}",
-		"description": "Output a clamped value"
+		"description": "Latte function: Outputs a clamped value: {=clamp(value, min, max)}."
 	},
-	"|truncate": {
+	"Latte filter: truncate": {
 		"prefix": "|truncate",
 		"body": "|truncate:${1:length}${2:,'${3:append}'}",
-		"description": "Truncate text"
+		"description": "Latte filter: Truncates text: |truncate:length,append."
 	},
-	"|substr": {
+	"Latte filter: substr": {
 		"prefix": "|substr",
 		"body": "|substr:${1:offset}${2:,${3:length}}",
-		"description": "Extract a substring"
+		"description": "Latte filter: Extracts part of a string: |substr:offset,length."
 	},
-	"|trim": {
+	"Latte filter: trim": {
 		"prefix": "|trim",
 		"body": "|trim${1::'${2:charset}'}",
-		"description": "Trim characters from text"
+		"description": "Latte filter: Trims characters from text: |trim."
 	},
-	"|striptags": {
+	"Latte filter: striptags": {
 		"prefix": "|striptags",
 		"body": "|striptags",
-		"description": "Strip HTML tags"
+		"description": "Latte filter: Removes HTML tags: |striptags."
 	},
-	"|strip": {
+	"Latte filter: strip": {
 		"prefix": "|strip",
 		"body": "|strip",
-		"description": "Strip whitespace"
+		"description": "Latte filter: Strips whitespace: |strip."
 	},
-	"|webalize": {
+	"Latte filter: webalize": {
 		"prefix": "|webalize",
 		"body": "|webalize${1::'${2:charlist}'${3:,${4:lower}}}",
-		"description": "Convert text to a URL-friendly slug"
+		"description": "Latte filter: Converts text to a URL-friendly slug: |webalize."
 	},
-	"|toAscii": {
+	"Latte filter: toAscii": {
 		"prefix": "|toAscii",
 		"body": "|toAscii",
-		"description": "Transliterate text to ASCII"
+		"description": "Latte filter: Transliterates text to ASCII: |toAscii."
 	},
-	"|indent": {
+	"Latte filter: indent": {
 		"prefix": "|indent",
 		"body": "|indent${1::${2:level}${3:,'${4:char}'}}",
-		"description": "Indent lines"
+		"description": "Latte filter: Indents lines: |indent:level."
 	},
-	"|replace": {
+	"Latte filter: replace": {
 		"prefix": "|replace",
 		"body": "|replace:'${1:search}'${2:,'${3:replace}'}",
-		"description": "Replace text"
+		"description": "Latte filter: Replaces text: |replace:search,replace."
 	},
-	"|replaceRE": {
+	"Latte filter: replaceRE": {
 		"prefix": "|replaceRE",
 		"body": "|replaceRE:'${1:pattern}'${2:,'${3:replace}'}",
-		"description": "Replace text with a regular expression"
+		"description": "Latte filter: Replaces text using a regular expression: |replaceRE:pattern,replace."
 	},
-	"|padLeft": {
+	"Latte filter: padLeft": {
 		"prefix": "|padLeft",
 		"body": "|padLeft:${1:length}${2:,'${3:pad}'}",
-		"description": "Pad text on the left"
+		"description": "Latte filter: Pads text on the left: |padLeft:length."
 	},
-	"|padRight": {
+	"Latte filter: padRight": {
 		"prefix": "|padRight",
 		"body": "|padRight:${1:length}${2:,'${3:pad}'}",
-		"description": "Pad text on the right"
+		"description": "Latte filter: Pads text on the right: |padRight:length."
 	},
-	"|repeat": {
+	"Latte filter: repeat": {
 		"prefix": "|repeat",
 		"body": "|repeat:${1:count}",
-		"description": "Repeat text"
+		"description": "Latte filter: Repeats text: |repeat:count."
 	},
-	"|implode": {
+	"Latte filter: implode": {
 		"prefix": "|implode",
 		"body": "|implode:'${1:glue}'",
-		"description": "Join array values"
+		"description": "Latte filter: Joins array values: |implode:glue."
 	},
-	"|nl2br": {
+	"Latte filter: nl2br": {
 		"prefix": "|nl2br",
 		"body": "|nl2br",
-		"description": "Convert line breaks to br tags"
+		"description": "Latte filter: Converts line breaks to <br> tags: |nl2br."
 	},
-	"|lower": {
+	"Latte filter: lower": {
 		"prefix": "|lower",
 		"body": "|lower",
-		"description": "Lowercase text"
+		"description": "Latte filter: Converts text to lowercase: |lower."
 	},
-	"|upper": {
+	"Latte filter: upper": {
 		"prefix": "|upper",
 		"body": "|upper",
-		"description": "Uppercase text"
+		"description": "Latte filter: Converts text to uppercase: |upper."
 	},
-	"|firstUpper": {
+	"Latte filter: firstUpper": {
 		"prefix": "|firstUpper",
 		"body": "|firstUpper",
-		"description": "Uppercase the first character"
+		"description": "Latte filter: Uppercases the first character: |firstUpper."
 	},
-	"|capitalize": {
+	"Latte filter: capitalize": {
 		"prefix": "|capitalize",
 		"body": "|capitalize",
-		"description": "Capitalize words"
+		"description": "Latte filter: Capitalizes words: |capitalize."
 	},
-	"|date": {
+	"Latte filter: date": {
 		"prefix": "|date",
 		"body": "|date:'${1:format}'",
-		"description": "Format a date"
+		"description": "Latte filter: Formats a date: |date:format."
 	},
-	"|number": {
+	"Latte filter: number": {
 		"prefix": "|number",
 		"body": "|number${1::${2:decimals}${3:,'${4:decPoint}'${5:,'${6:thousandsSep}'}}}",
-		"description": "Format a number"
+		"description": "Latte filter: Formats a number: |number."
 	},
-	"|bytes": {
+	"Latte filter: bytes": {
 		"prefix": "|bytes",
 		"body": "|bytes${1::${2:precision}}",
-		"description": "Format bytes"
+		"description": "Latte filter: Formats byte values: |bytes."
 	},
-	"|dataStream": {
+	"Latte filter: dataStream": {
 		"prefix": "|dataStream",
 		"body": "|dataStream${1::${2:mimetype}}",
-		"description": "Create a data stream"
+		"description": "Latte filter: Converts data to a data stream: |dataStream:mimetype."
 	},
-	"|url": {
+	"Latte filter: url": {
 		"prefix": "|url",
 		"body": "|url",
-		"description": "Escape a URL"
+		"description": "Latte filter: Escapes text for URL output: |url."
 	},
-	"|length": {
+	"Latte filter: length": {
 		"prefix": "|length",
 		"body": "|length",
-		"description": "Get value length"
+		"description": "Latte filter: Returns the length of a value: |length."
 	},
-	"|null": {
+	"Latte filter: null": {
 		"prefix": "|null",
 		"body": "|null",
-		"description": "Discard output"
+		"description": "Latte filter: Discards output: |null."
 	},
-	"|sort": {
+	"Latte filter: sort": {
 		"prefix": "|sort",
 		"body": "|sort",
-		"description": "Sort values"
+		"description": "Latte filter: Sorts values: |sort."
 	},
-	"|reverse": {
+	"Latte filter: reverse": {
 		"prefix": "|reverse",
 		"body": "|reverse",
-		"description": "Reverse values"
+		"description": "Latte filter: Reverses values: |reverse."
 	},
-	"|clamp": {
+	"Latte filter: clamp": {
 		"prefix": "|clamp",
 		"body": "|clamp: (${1:0, 255})",
-		"description": "Clamp a value"
+		"description": "Latte filter: Clamps a value between min and max: |clamp:(min, max)."
 	},
-	"|json": {
+	"Latte filter: json": {
 		"prefix": "|json",
 		"body": "|json",
-		"description": "Encode value as JSON"
+		"description": "Latte filter: Encodes a value as JSON: |json."
 	},
-	"|translate": {
+	"Latte filter: translate": {
 		"prefix": "|translate",
 		"body": "|translate${1::${2:context}}",
-		"description": "Translate filtered text"
+		"description": "Latte filter: Translates filtered text: |translate:context."
 	},
-	"|nocheck": {
+	"Latte filter: nocheck": {
 		"prefix": "|nocheck",
 		"body": "|nocheck",
-		"description": "Disable content checks for output"
+		"description": "Latte filter: Disables content checks for this output: |nocheck."
 	},
-	"n:class": {
+	"Latte attribute: n:class": {
 		"prefix": "n:class",
 		"body": "n:class=\"${1:condition} ? ${2:active}\"",
-		"description": "Conditional class attribute"
+		"description": "Latte attribute: Adds conditional classes with n:class."
 	},
-	"n:attr": {
+	"Latte attribute: n:attr": {
 		"prefix": "n:attr",
 		"body": "n:attr=\"${1:href} => ${2:\\$href}\"",
-		"description": "Dynamic attributes"
+		"description": "Latte attribute: Adds dynamic attributes with n:attr."
 	},
-	"n:ifcontent": {
+	"Latte attribute: n:ifcontent": {
 		"prefix": "n:ifcontent",
 		"body": "n:ifcontent",
-		"description": "Render element only when it has content"
+		"description": "Latte attribute: Renders an element only when it has content."
 	},
-	"n:ifchanged": {
+	"Latte attribute: n:ifchanged": {
 		"prefix": "n:ifchanged",
 		"body": "n:ifchanged",
-		"description": "Render element only when content changes"
+		"description": "Latte attribute: Renders an element only when content changes."
 	},
-	"n:foreach": {
+	"Latte attribute: n:foreach": {
 		"prefix": "n:foreach",
 		"body": "n:foreach=\"${1:\\$items} as ${2:\\$item}\"",
-		"description": "Loop element over items"
+		"description": "Latte attribute: Repeats an element for each item."
 	},
-	"n:inner-foreach": {
+	"Latte attribute: n:inner-foreach": {
 		"prefix": "n:inner-foreach",
 		"body": "n:inner-foreach=\"${1:\\$items} as ${2:\\$item}\"",
-		"description": "Loop element contents over items"
+		"description": "Latte attribute: Repeats only the element contents for each item."
 	},
-	"n:tag-if": {
+	"Latte attribute: n:tag-if": {
 		"prefix": "n:tag-if",
 		"body": "n:tag-if=\"${1:\\$condition}\"",
-		"description": "Conditionally render the HTML tag"
+		"description": "Latte attribute: Conditionally renders the HTML tag itself."
 	},
-	"n:href": {
+	"Latte attribute: n:href": {
 		"prefix": "n:href",
 		"body": "n:href=\"${1:Presenter}:${2:action} ${3:\\$arg}\"",
-		"description": "Presenter link attribute"
+		"description": "Latte attribute: Creates a presenter link in an href-like attribute."
 	},
-	"n:snippet": {
+	"Latte attribute: n:snippet": {
 		"prefix": "n:snippet",
 		"body": "n:snippet=\"${1:content}\"",
-		"description": "AJAX snippet attribute"
+		"description": "Latte attribute: Marks an element as an AJAX snippet."
 	},
-	"n:name": {
+	"Nette form attribute: n:name": {
 		"prefix": "n:name",
 		"body": "n:name=\"${1:fieldName}\"",
-		"description": "Bind form element name"
+		"description": "Nette form: Binds an element to a form control name."
 	},
-	"n:input": {
+	"Nette form attribute: n:input": {
 		"prefix": "n:input",
 		"body": "n:input=\"${1:fieldName}\"",
-		"description": "Bind form input"
+		"description": "Nette form: Binds an element to a form input."
 	},
-	"n:validation": {
+	"Nette form attribute: n:validation": {
 		"prefix": "n:validation",
 		"body": "n:validation=\"${1:fieldName}\"",
-		"description": "Bind form validation"
+		"description": "Nette form: Binds validation output to a form field."
 	},
-	"n:nonce": {
+	"Latte attribute: n:nonce": {
 		"prefix": "n:nonce",
 		"body": "n:nonce",
-		"description": "Add CSP nonce attribute"
+		"description": "Latte attribute: Adds a CSP nonce attribute."
 	}
 }
