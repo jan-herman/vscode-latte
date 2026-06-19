@@ -106,6 +106,9 @@
                     "include": "#latte-block-name"
                 },
                 {
+                    "include": "#latte-template-type"
+                },
+                {
                     "include": "#latte-parameter-type"
                 },
                 {
@@ -311,6 +314,18 @@
             "match": "(?<=\\s)(as\\b|in\\b)\\s?",
             "name": "keyword.operator.latte"
         },
+        "latte-template-type": {
+            "captures": {
+                "2": {
+                    "patterns": [
+                        {
+                            "include": "source.php#php-types"
+                        }
+                    ]
+                }
+            },
+            "match": "(?<=\\{templateType)(\\s+)([^}\\|]+?)\\s*(?=\\}|/\\}|\\|)"
+        },
         "latte-parameter-type": {
             "captures": {
                 "1": {
@@ -321,7 +336,7 @@
                     ]
                 }
             },
-            "match": "(?!(?:as|in|and|or|xor|AS|IN|AND|OR|XOR)\\b)((?:\\?\\s*)?(?:\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*|\\(\\s*\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*(?:\\s*[|&]\\s*\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*)+\\s*\\))(?:\\s*[|&]\\s*(?:\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*|\\(\\s*\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*(?:\\s*[|&]\\s*\\\\?[a-zA-Z_][a-zA-Z_0-9]*(?:\\\\[a-zA-Z_][a-zA-Z_0-9]*)*)+\\s*\\)))*)\\s+(?=\\$|\\.\\.\\.\\$)"
+            "match": "(?<![$\\\\\\w.])(?!(?:as|in|and|or|xor|AS|IN|AND|OR|XOR)\\b)((?:\\?\\s*)?[\\\\(a-zA-Z_][a-zA-Z0-9_\\\\()]*\\s*(?:[|&]\\s*[\\\\(a-zA-Z_][a-zA-Z0-9_\\\\()]*\\s*)*)\\s+(?=\\$|\\.\\.\\.\\$)"
         },
         "latte-named-argument-leading": {
             "captures": {
