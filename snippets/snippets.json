@@ -1,12 +1,12 @@
 {
 	"block": {
 		"prefix": "block",
-		"body": "{block ${1:content}}\n$0\n{/block}",
+		"body": "{block ${1:content}}\n\t$0\n{/block}",
 		"description": "Latte named block"
 	},
 	"block local": {
 		"prefix": "block",
-		"body": "{block local ${1:content}}\n$0\n{/block}",
+		"body": "{block local ${1:content}}\n\t$0\n{/block}",
 		"description": "Latte local block"
 	},
 	"sandbox": {
@@ -16,7 +16,7 @@
 	},
 	"try": {
 		"prefix": "try",
-		"body": "{try}\n$0\n{/try}",
+		"body": "{try}\n\t$0\n{/try}",
 		"description": "Latte try block"
 	},
 	"rollback": {
@@ -26,12 +26,12 @@
 	},
 	"embed": {
 		"prefix": "embed",
-		"body": "{embed '${1:template.latte}'}\n$0\n{/embed}",
+		"body": "{embed '${1:template.latte}'}\n\t$0\n{/embed}",
 		"description": "Embed a template and override blocks"
 	},
 	"snippet": {
 		"prefix": "snippet",
-		"body": "{snippet ${1:content}}\n$0\n{/snippet}",
+		"body": "{snippet ${1:content}}\n\t$0\n{/snippet}",
 		"description": "Latte AJAX snippet block"
 	},
 	"import": {
@@ -51,12 +51,12 @@
 	},
 	"capture": {
 		"prefix": "capture",
-		"body": "{capture \\$${1:var}}\n$0\n{/capture}",
+		"body": "{capture \\$${1:var}}\n\t$0\n{/capture}",
 		"description": "Capture rendered output into a variable"
 	},
 	"define": {
 		"prefix": "define",
-		"body": "{define ${1:content}}\n$0\n{/define}",
+		"body": "{define ${1:content}}\n\t$0\n{/define}",
 		"description": "Define a reusable block"
 	},
 	"include": {
@@ -81,37 +81,37 @@
 	},
 	"foreach": {
 		"prefix": "foreach",
-		"body": "{foreach \\$${1:items} as \\$${2:item}}\n$0\n{/foreach}",
+		"body": "{foreach \\$${1:items} as \\$${2:item}}\n\t$0\n{/foreach}",
 		"description": "Loop over items"
 	},
 	"while": {
 		"prefix": "while",
-		"body": "{while \\$${1:item} = \\$${2:items}->fetch()}\n$0\n{/while}",
+		"body": "{while \\$${1:item} = \\$${2:items}->fetch()}\n\t$0\n{/while}",
 		"description": "Latte while loop"
 	},
 	"iterateWhile": {
 		"prefix": "iterateWhile",
-		"body": "{iterateWhile}\n$0\n{/while}",
+		"body": "{iterateWhile}\n\t$0\n{/while}",
 		"description": "Continue a foreach-style iteration"
 	},
 	"for": {
 		"prefix": "for",
-		"body": "{for \\$${1:i} = 0; \\$${1:i} < ${2:10}; \\$${1:i}++}\n$0\n{/for}",
+		"body": "{for \\$${1:i} = 0; \\$${1:i} < ${2:10}; \\$${1:i}++}\n\t$0\n{/for}",
 		"description": "Latte for loop"
 	},
 	"first": {
 		"prefix": "first",
-		"body": "{first}\n$0\n{/first}",
+		"body": "{first}\n\t$0\n{/first}",
 		"description": "Render content only on first iteration"
 	},
 	"last": {
 		"prefix": "last",
-		"body": "{last}\n$0\n{/last}",
+		"body": "{last}\n\t$0\n{/last}",
 		"description": "Render content only on last iteration"
 	},
 	"sep": {
 		"prefix": "sep",
-		"body": "{sep}\n$0\n{/sep}",
+		"body": "{sep}\n\t$0\n{/sep}",
 		"description": "Render separator content between iterations"
 	},
 	"continueIf": {
@@ -136,22 +136,22 @@
 	},
 	"if": {
 		"prefix": "if",
-		"body": "{if \\$${1:condition}}\n$0\n{/if}",
+		"body": "{if \\$${1:condition}}\n\t$0\n{/if}",
 		"description": "Latte if block"
 	},
 	"ifset": {
 		"prefix": "ifset",
-		"body": "{ifset \\$${1:var}}\n$0\n{/ifset}",
+		"body": "{ifset \\$${1:var}}\n\t$0\n{/ifset}",
 		"description": "Render when value is set"
 	},
 	"ifchanged": {
 		"prefix": "ifchanged",
-		"body": "{ifchanged ${1:expression}}\n$0\n{/ifchanged}",
+		"body": "{ifchanged ${1:expression}}\n\t$0\n{/ifchanged}",
 		"description": "Render when expression changes"
 	},
 	"cache": {
 		"prefix": "cache",
-		"body": "{cache \\$${1:key}}\n$0\n{/cache}",
+		"body": "{cache \\$${1:key}}\n\t$0\n{/cache}",
 		"description": "Cache rendered template output"
 	},
 	"default": {
@@ -176,7 +176,7 @@
 	},
 	"form": {
 		"prefix": "form",
-		"body": "{form ${1:exampleSignForm}}\n$0\n{/form}",
+		"body": "{form ${1:exampleSignForm}}\n\t$0\n{/form}",
 		"description": "Render a Nette form"
 	},
 	"formPrint": {
@@ -226,12 +226,12 @@
 	},
 	"syntax": {
 		"prefix": "syntax",
-		"body": "{syntax ${1:mode}}\n$0\n{/syntax}",
+		"body": "{syntax ${1:mode}}\n\t$0\n{/syntax}",
 		"description": "Switch Latte syntax mode"
 	},
 	"spaceless": {
 		"prefix": "spaceless",
-		"body": "{spaceless}\n$0\n{/spaceless}",
+		"body": "{spaceless}\n\t$0\n{/spaceless}",
 		"description": "Remove whitespace between HTML tags"
 	},
 	"l": {
