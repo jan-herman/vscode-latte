@@ -1,4 +1,4 @@
-# Latte
+# Nette Latte extension for VS Code
 
 Advanced Latte template syntax highlighting for Visual Studio Code, with Neon support and snippets included.
 
