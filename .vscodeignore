@@ -1,0 +1,6 @@
+.vscode/**
+_syntaxes/**
+.vsixmanifest
+*.vsix
+.git/**
+.gitignore

@@ -1,372 +1,527 @@
 {
 	"block": {
 		"prefix": "block",
-		"body": "{block ${1:content}}\n$0\n{/block}"
+		"body": "{block ${1:content}}\n$0\n{/block}",
+		"description": "Latte named block"
 	},
 	"block local": {
 		"prefix": "block",
-		"body": "{block local ${1:content}}\n$0\n{/block}"
+		"body": "{block local ${1:content}}\n$0\n{/block}",
+		"description": "Latte local block"
 	},
 	"sandbox": {
 		"prefix": "sandbox",
-		"body": "{sandbox '${1:untrusted_example.latte}'}\n"
+		"body": "{sandbox '${1:untrusted_example.latte}'}\n",
+		"description": "Render an untrusted template in sandbox mode"
 	},
 	"try": {
 		"prefix": "try",
-		"body": "{try}\n$0\n{/try}"
+		"body": "{try}\n$0\n{/try}",
+		"description": "Latte try block"
+	},
+	"rollback": {
+		"prefix": "rollback",
+		"body": "{rollback}$0",
+		"description": "Rollback a Latte try block"
 	},
 	"embed": {
 		"prefix": "embed",
-		"body": "{embed '${1:template.latte}'}\n$0\n{/embed}"
+		"body": "{embed '${1:template.latte}'}\n$0\n{/embed}",
+		"description": "Embed a template and override blocks"
 	},
 	"snippet": {
 		"prefix": "snippet",
-		"body": "{snippet ${1:content}}\n$0\n{/snippet}"
+		"body": "{snippet ${1:content}}\n$0\n{/snippet}",
+		"description": "Latte AJAX snippet block"
 	},
 	"import": {
 		"prefix": "import",
-		"body": "{import '${1:../@layout.latte}'}\n$0"
+		"body": "{import '${1:../@layout.latte}'}\n$0",
+		"description": "Import blocks from another template"
 	},
 	"layout": {
 		"prefix": "layout",
-		"body": "{layout '${1:../@layout.latte}'}\n$0"
+		"body": "{layout '${1:../@layout.latte}'}\n$0",
+		"description": "Set the layout template"
 	},
 	"extends": {
 		"prefix": "extends",
-		"body": "{extends '${1:../@layout.latte}'}\n$0"
+		"body": "{extends '${1:../@layout.latte}'}\n$0",
+		"description": "Extend another template"
 	},
 	"capture": {
 		"prefix": "capture",
-		"body": "{capture \\$${1:var}}\n$0\n{/capture}"
+		"body": "{capture \\$${1:var}}\n$0\n{/capture}",
+		"description": "Capture rendered output into a variable"
 	},
 	"define": {
 		"prefix": "define",
-		"body": "{define ${1:content}}\n$0\n{/define}"
+		"body": "{define ${1:content}}\n$0\n{/define}",
+		"description": "Define a reusable block"
 	},
 	"include": {
 		"prefix": "include",
-		"body": "{include #${1:content}}\n$0"
+		"body": "{include #${1:content}}\n$0",
+		"description": "Include a block"
 	},
 	"include block": {
 		"prefix": "include",
-		"body": "{include block '${1:foo}'}\n$0"
+		"body": "{include block '${1:foo}'}\n$0",
+		"description": "Include a named block"
 	},
 	"include file": {
 		"prefix": "include",
-		"body": "{include file '${1:foo}'}\n$0"
+		"body": "{include file '${1:foo}'}\n$0",
+		"description": "Include a template file"
 	},
 	"include from": {
 		"prefix": "include",
-		"body": "{include block from '${1:template.latte}'}\n$0"
+		"body": "{include block from '${1:template.latte}'}\n$0",
+		"description": "Include a block from another template"
 	},
 	"foreach": {
 		"prefix": "foreach",
-		"body": "{foreach \\$$1 as \\$$1}\n$0\n{/foreach}"
+		"body": "{foreach \\$${1:items} as \\$${2:item}}\n$0\n{/foreach}",
+		"description": "Loop over items"
 	},
 	"while": {
 		"prefix": "while",
-		"body": "{while \\$$1 = \\$$1s->fetch()}\n$0\n{/while}"
+		"body": "{while \\$${1:item} = \\$${2:items}->fetch()}\n$0\n{/while}",
+		"description": "Latte while loop"
 	},
 	"iterateWhile": {
 		"prefix": "iterateWhile",
-		"body": "{iterateWhile}\n$0\n{/while}"
+		"body": "{iterateWhile}\n$0\n{/while}",
+		"description": "Continue a foreach-style iteration"
 	},
 	"for": {
 		"prefix": "for",
-		"body": "{for \\$${1:i} = 0; \\$${1:i} < ${2:10}; \\$${1:i}++}\n$0\n{/for}"
+		"body": "{for \\$${1:i} = 0; \\$${1:i} < ${2:10}; \\$${1:i}++}\n$0\n{/for}",
+		"description": "Latte for loop"
 	},
 	"first": {
 		"prefix": "first",
-		"body": "{first}\n$0\n{/first}"
+		"body": "{first}\n$0\n{/first}",
+		"description": "Render content only on first iteration"
 	},
 	"last": {
 		"prefix": "last",
-		"body": "{last}\n$0\n{/last}"
+		"body": "{last}\n$0\n{/last}",
+		"description": "Render content only on last iteration"
 	},
 	"sep": {
 		"prefix": "sep",
-		"body": "{sep}\n$0\n{/sep}"
+		"body": "{sep}\n$0\n{/sep}",
+		"description": "Render separator content between iterations"
 	},
 	"continueIf": {
 		"prefix": "continueIf",
-		"body": "{continueIf \\$${1:foo}}$0"
+		"body": "{continueIf \\$${1:condition}}$0",
+		"description": "Continue loop when condition is true"
 	},
 	"skipIf": {
 		"prefix": "skipIf",
-		"body": "{skipIf (\\$${1:age < 18})}$0"
+		"body": "{skipIf \\$${1:condition}}$0",
+		"description": "Skip rendering when condition is true"
 	},
 	"switch": {
 		"prefix": "switch",
-		"body": "{switch $${1:example}}\n$0 {case $$1::NEW}<b>new item</b>\n$0 {case $$1::SOLD, $$1::UNKNOWN}<b>not available</b>\n$0{/switch}"
+		"body": "{switch ${1:expression}}\n\t{case ${2:value}}\n\t\t$0\n{/switch}",
+		"description": "Latte switch block"
 	},
 	"breakIf": {
 		"prefix": "breakIf",
-		"body": "{breakIf \\$${1:foo}}$0"
+		"body": "{breakIf \\$${1:condition}}$0",
+		"description": "Break loop when condition is true"
 	},
 	"if": {
 		"prefix": "if",
-		"body": "{if \\$${1:foo}}\n$0\n{/if}"
+		"body": "{if \\$${1:condition}}\n$0\n{/if}",
+		"description": "Latte if block"
 	},
 	"ifset": {
 		"prefix": "ifset",
-		"body": "{ifset \\$${1:foo}}\n$0\n{/ifset}"
+		"body": "{ifset \\$${1:var}}\n$0\n{/ifset}",
+		"description": "Render when value is set"
 	},
 	"ifchanged": {
 		"prefix": "ifchanged",
-		"body": "{ifchanged $${1:foo[0]}}\n$0\n{/ifchanged}"
+		"body": "{ifchanged ${1:expression}}\n$0\n{/ifchanged}",
+		"description": "Render when expression changes"
 	},
 	"cache": {
 		"prefix": "cache",
-		"body": "{cache \\$${1:var}}\n$0\n{/cache}"
+		"body": "{cache \\$${1:key}}\n$0\n{/cache}",
+		"description": "Cache rendered template output"
 	},
 	"default": {
 		"prefix": "default",
-		"body": "{default \\$${1:foo = ''}}$0"
+		"body": "{default \\$${1:foo} = ${2:''}}$0",
+		"description": "Set a default template variable"
 	},
 	"link": {
 		"prefix": "link",
-		"body": "{link ${1:Default}}\n$0"
+		"body": "{link ${1:Default}}\n$0",
+		"description": "Create a presenter link"
 	},
 	"plink": {
 		"prefix": "plink",
-		"body": "{plink ${1:Default}}\n$0"
+		"body": "{plink ${1:Default}}\n$0",
+		"description": "Create an absolute presenter link"
 	},
 	"control": {
 		"prefix": "control",
-		"body": "{control ${1:exampleSignForm}}\n$0"
+		"body": "{control ${1:exampleSignForm}}\n$0",
+		"description": "Render a Nette control"
 	},
 	"form": {
 		"prefix": "form",
-		"body": "{form ${1:exampleSignForm}}\n$0\n{/form}"
+		"body": "{form ${1:exampleSignForm}}\n$0\n{/form}",
+		"description": "Render a Nette form"
 	},
 	"formPrint": {
 		"prefix": "formPrint",
-		"body": "{formPrint ${1:exampleSignForm}}"
+		"body": "{formPrint ${1:exampleSignForm}}",
+		"description": "Print a Nette form"
 	},
 	"varPrint": {
 		"prefix": "varPrint",
-		"body": "{varPrint ${1:example}}\n"
+		"body": "{varPrint ${1:example}}\n",
+		"description": "Print variable type information"
 	},
 	"var": {
 		"prefix": "var",
-		"body": "{var \\$${1:name} = 'John Smish'}\n"
+		"body": "{var \\$${1:name} = 'John Smith'}\n",
+		"description": "Declare a template variable"
 	},
 	"parameters": {
 		"prefix": "parameters",
-		"body": "{parameters \n  ${1:?string} \\$${2:name},$0\n}"
+		"body": "{parameters \n\t${1:?string} \\$${2:name},$0\n}",
+		"description": "Declare template parameters"
 	},
 	"varType": {
 		"prefix": "varType",
-		"body": "{varType ${0:string} \\$${1:lang}}\n"
+		"body": "{varType ${1:string} \\$${2:lang}}\n",
+		"description": "Annotate a template variable type"
 	},
 	"templateType": {
 		"prefix": "templateType",
-		"body": "{templateType ${1:App\\Presenter\\ExampleDefaultTemplate}}\n"
+		"body": "{templateType ${1:App\\Presenter\\ExampleDefaultTemplate}}\n",
+		"description": "Annotate the template parameter class"
 	},
 	"templatePrint": {
 		"prefix": "templatePrint",
-		"body": "{templatePrint ${1:App\\Presenter\\ExampleDefaultTemplate}}\n"
+		"body": "{templatePrint ${1:App\\Presenter\\ExampleDefaultTemplate}}\n",
+		"description": "Generate template type information"
 	},
 	"label": {
 		"prefix": "label",
-		"body": "{label ${1:foo} /}\n"
+		"body": "{label ${1:foo} /}\n",
+		"description": "Render a form label"
 	},
 	"input": {
 		"prefix": "input",
-		"body": "{input ${1:foo}}\n"
+		"body": "{input ${1:foo}}\n",
+		"description": "Render a form input"
 	},
 	"syntax": {
 		"prefix": "syntax",
-		"body": "{syntax ${1:mode}}\n$0\n{/syntax}"
+		"body": "{syntax ${1:mode}}\n$0\n{/syntax}",
+		"description": "Switch Latte syntax mode"
+	},
+	"spaceless": {
+		"prefix": "spaceless",
+		"body": "{spaceless}\n$0\n{/spaceless}",
+		"description": "Remove whitespace between HTML tags"
 	},
 	"l": {
 		"prefix": "l",
-		"body": "{l}$0"
+		"body": "{l}$0",
+		"description": "Print a literal opening brace"
 	},
 	"r": {
 		"prefix": "r",
-		"body": "{r}$0"
+		"body": "{r}$0",
+		"description": "Print a literal closing brace"
+	},
+	"comment": {
+		"prefix": "comment",
+		"body": "{* ${1:comment} *}$0",
+		"description": "Latte block comment"
+	},
+	"translator": {
+		"prefix": "_",
+		"body": "{_'${1:text}'}$0",
+		"description": "Translate a message"
+	},
+	"translator with context": {
+		"prefix": "_",
+		"body": "{_'${1:text}', ${2:context}}$0",
+		"description": "Translate a message with context"
+	},
+	"ternary": {
+		"prefix": "tern",
+		"body": "{\\$${1:condition} ? ${2:'yes'} : ${3:'no'}}$0",
+		"description": "Latte ternary expression"
 	},
 	"contentType": {
 		"prefix": "contentType",
-		"body": "{contentType ${1:application/xml}}\n$0"
+		"body": "{contentType ${1:application/xml}}\n$0",
+		"description": "Set output content type"
 	},
 	"status": {
 		"prefix": "status",
-		"body": "{status ${1:500}}\n$0"
+		"body": "{status ${1:500}}\n$0",
+		"description": "Set HTTP response status"
+	},
+	"do": {
+		"prefix": "do",
+		"body": "{do ${1:code}}",
+		"description": "Execute Latte expression without output"
 	},
 	"dump": {
 		"prefix": "dump",
-		"body": "{dump \\$${1:var}}\n$0"
+		"body": "{dump \\$${1:var}}\n$0",
+		"description": "Dump a variable for debugging"
 	},
 	"php": {
 		"prefix": "php",
-		"body": "{php \\$${1:var}}\n$0"
+		"body": "{php ${1:code}}\n$0",
+		"description": "Run PHP code in a Latte tag"
 	},
 	"debugbreak": {
 		"prefix": "debugbreak",
-		"body": "{debugbreak \\$${1:cond}}\n$0"
+		"body": "{debugbreak \\$${1:condition}}\n$0",
+		"description": "Trigger a debug break conditionally"
 	},
 	"clamp": {
 		"prefix": "clamp",
-		"body": "{=clamp($${1:level, 0, 255})}"
+		"body": "{=clamp(${1:level}, ${2:0}, ${3:255})}",
+		"description": "Output a clamped value"
 	},
-	// Default Helpers
-	// String modification
 	"|truncate": {
 		"prefix": "|truncate",
-		"body": "|truncate:${1:length}${2:,'${3:append}'}"
+		"body": "|truncate:${1:length}${2:,'${3:append}'}",
+		"description": "Truncate text"
 	},
 	"|substr": {
 		"prefix": "|substr",
-		"body": "|substr:${1:offset}${2:,${3:length}}"
+		"body": "|substr:${1:offset}${2:,${3:length}}",
+		"description": "Extract a substring"
 	},
 	"|trim": {
 		"prefix": "|trim",
-		"body": "|trim${1::'${2:charset}'}"
+		"body": "|trim${1::'${2:charset}'}",
+		"description": "Trim characters from text"
 	},
 	"|striptags": {
 		"prefix": "|striptags",
-		"body": "|striptags"
+		"body": "|striptags",
+		"description": "Strip HTML tags"
 	},
 	"|strip": {
 		"prefix": "|strip",
-		"body": "|strip"
+		"body": "|strip",
+		"description": "Strip whitespace"
 	},
 	"|webalize": {
 		"prefix": "|webalize",
-		"body": "|webalize${1::'${2:charlist}'${3:,${4:lower}}}"
+		"body": "|webalize${1::'${2:charlist}'${3:,${4:lower}}}",
+		"description": "Convert text to a URL-friendly slug"
 	},
 	"|toAscii": {
 		"prefix": "|toAscii",
-		"body": "|toAscii"
+		"body": "|toAscii",
+		"description": "Transliterate text to ASCII"
 	},
 	"|indent": {
 		"prefix": "|indent",
-		"body": "|indent${1::${2:level}${3:,'${4:char}'}}"
+		"body": "|indent${1::${2:level}${3:,'${4:char}'}}",
+		"description": "Indent lines"
 	},
 	"|replace": {
 		"prefix": "|replace",
-		"body": "|replace:'${1:search}'${2:,'${3:replace}'}"
+		"body": "|replace:'${1:search}'${2:,'${3:replace}'}",
+		"description": "Replace text"
 	},
 	"|replaceRE": {
 		"prefix": "|replaceRE",
-		"body": "|replaceRE:'${1:pattern}'${2:,'${3:replace}'}"
+		"body": "|replaceRE:'${1:pattern}'${2:,'${3:replace}'}",
+		"description": "Replace text with a regular expression"
 	},
 	"|padLeft": {
 		"prefix": "|padLeft",
-		"body": "|padLeft:${1:length}${2:,'${3:pad}'}"
+		"body": "|padLeft:${1:length}${2:,'${3:pad}'}",
+		"description": "Pad text on the left"
 	},
 	"|padRight": {
 		"prefix": "|padRight",
-		"body": "|padRight:${1:length}${2:,'${3:pad}'}"
+		"body": "|padRight:${1:length}${2:,'${3:pad}'}",
+		"description": "Pad text on the right"
 	},
 	"|repeat": {
 		"prefix": "|repeat",
-		"body": "|repeat:${1:count}"
+		"body": "|repeat:${1:count}",
+		"description": "Repeat text"
 	},
 	"|implode": {
 		"prefix": "|implode",
-		"body": "|implode:'${1:glue}'"
+		"body": "|implode:'${1:glue}'",
+		"description": "Join array values"
 	},
 	"|nl2br": {
 		"prefix": "|nl2br",
-		"body": "|nl2br"
+		"body": "|nl2br",
+		"description": "Convert line breaks to br tags"
 	},
-	// Letter casing
 	"|lower": {
 		"prefix": "|lower",
-		"body": "|lower"
+		"body": "|lower",
+		"description": "Lowercase text"
 	},
 	"|upper": {
 		"prefix": "|upper",
-		"body": "|upper"
+		"body": "|upper",
+		"description": "Uppercase text"
 	},
 	"|firstUpper": {
 		"prefix": "|firstUpper",
-		"body": "|firstUpper"
+		"body": "|firstUpper",
+		"description": "Uppercase the first character"
 	},
 	"|capitalize": {
 		"prefix": "|capitalize",
-		"body": "|capitalize"
+		"body": "|capitalize",
+		"description": "Capitalize words"
 	},
-	// Formatting
 	"|date": {
 		"prefix": "|date",
-		"body": "|date:'${1:format}'"
+		"body": "|date:'${1:format}'",
+		"description": "Format a date"
 	},
 	"|number": {
 		"prefix": "|number",
-		"body": "|number${1::${2:decimals}${3:,'${4:decPoint}'${5:,'${6:thousandsSep}'}}}"
+		"body": "|number${1::${2:decimals}${3:,'${4:decPoint}'${5:,'${6:thousandsSep}'}}}",
+		"description": "Format a number"
 	},
 	"|bytes": {
 		"prefix": "|bytes",
-		"body": "|bytes${1::${2:precision}}"
+		"body": "|bytes${1::${2:precision}}",
+		"description": "Format bytes"
 	},
-	// Other
 	"|dataStream": {
 		"prefix": "|dataStream",
-		"body": "|dataStream${1::${2:mimetype}}"
+		"body": "|dataStream${1::${2:mimetype}}",
+		"description": "Create a data stream"
 	},
 	"|url": {
 		"prefix": "|url",
-		"body": "|url"
+		"body": "|url",
+		"description": "Escape a URL"
 	},
 	"|length": {
 		"prefix": "|length",
-		"body": "|length"
+		"body": "|length",
+		"description": "Get value length"
 	},
 	"|null": {
 		"prefix": "|null",
-		"body": "|null"
+		"body": "|null",
+		"description": "Discard output"
 	},
 	"|sort": {
 		"prefix": "|sort",
-		"body": "|sort"
+		"body": "|sort",
+		"description": "Sort values"
 	},
 	"|reverse": {
 		"prefix": "|reverse",
-		"body": "|reverse"
+		"body": "|reverse",
+		"description": "Reverse values"
 	},
 	"|clamp": {
 		"prefix": "|clamp",
-		"body": "|clamp: (${1:0, 255})"
+		"body": "|clamp: (${1:0, 255})",
+		"description": "Clamp a value"
 	},
-	// HTML helpers
+	"|json": {
+		"prefix": "|json",
+		"body": "|json",
+		"description": "Encode value as JSON"
+	},
+	"|translate": {
+		"prefix": "|translate",
+		"body": "|translate${1::${2:context}}",
+		"description": "Translate filtered text"
+	},
+	"|nocheck": {
+		"prefix": "|nocheck",
+		"body": "|nocheck",
+		"description": "Disable content checks for output"
+	},
 	"n:class": {
 		"prefix": "n:class",
-		"body": "n:class=\"${0:condition} ? ${1:active}\""
+		"body": "n:class=\"${1:condition} ? ${2:active}\"",
+		"description": "Conditional class attribute"
 	},
 	"n:attr": {
 		"prefix": "n:attr",
-		"body": "n:attr=\"${0:value} => ${1:\\$value}\""
+		"body": "n:attr=\"${1:href} => ${2:\\$href}\"",
+		"description": "Dynamic attributes"
 	},
 	"n:ifcontent": {
 		"prefix": "n:ifcontent",
-		"body": "n:ifcontent"
+		"body": "n:ifcontent",
+		"description": "Render element only when it has content"
 	},
 	"n:ifchanged": {
 		"prefix": "n:ifchanged",
-		"body": "n:ifchanged"
+		"body": "n:ifchanged",
+		"description": "Render element only when content changes"
 	},
 	"n:foreach": {
 		"prefix": "n:foreach",
-		"body": "n:foreach=\"${0:\\$items} as ${1:\\$item}\""
+		"body": "n:foreach=\"${1:\\$items} as ${2:\\$item}\"",
+		"description": "Loop element over items"
 	},
 	"n:inner-foreach": {
 		"prefix": "n:inner-foreach",
-		"body": "n:inner-foreach=\"${0:\\$items} as ${1:\\$item}\""
+		"body": "n:inner-foreach=\"${1:\\$items} as ${2:\\$item}\"",
+		"description": "Loop element contents over items"
 	},
 	"n:tag-if": {
-		"prefix": "n:inner-foreach",
-		"body": "n:tag-if=\"${0:\\$url}\""
+		"prefix": "n:tag-if",
+		"body": "n:tag-if=\"${1:\\$condition}\"",
+		"description": "Conditionally render the HTML tag"
 	},
 	"n:href": {
 		"prefix": "n:href",
-		"body": "n:href=\"${0:Presenter}:${1:action} ${2:\\$arg}\""
+		"body": "n:href=\"${1:Presenter}:${2:action} ${3:\\$arg}\"",
+		"description": "Presenter link attribute"
 	},
 	"n:snippet": {
 		"prefix": "n:snippet",
-		"body": "n:snippet=\"${0:content}\""
+		"body": "n:snippet=\"${1:content}\"",
+		"description": "AJAX snippet attribute"
+	},
+	"n:name": {
+		"prefix": "n:name",
+		"body": "n:name=\"${1:fieldName}\"",
+		"description": "Bind form element name"
+	},
+	"n:input": {
+		"prefix": "n:input",
+		"body": "n:input=\"${1:fieldName}\"",
+		"description": "Bind form input"
+	},
+	"n:validation": {
+		"prefix": "n:validation",
+		"body": "n:validation=\"${1:fieldName}\"",
+		"description": "Bind form validation"
+	},
+	"n:nonce": {
+		"prefix": "n:nonce",
+		"body": "n:nonce",
+		"description": "Add CSP nonce attribute"
 	}
 }

@@ -1,21 +1,47 @@
 {
 	"name": "latte",
-	"displayName": "Nette Latte + Neon",
-	"description": "Nette Latte + Neon support for VS Code",
-	"version": "0.6.0",
+	"displayName": "Latte",
+	"description": "Advanced Latte template syntax highlighting with PHP-aware attributes, Alpine.js support, Neon syntax, and snippets.",
+	"version": "1.0.0",
 	"publisher": "jan-herman",
+	"author": {
+		"name": "Jan Herman",
+		"email": "mail@janherman.com",
+		"url": "https://janherman.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/jan_herman/VS-Latte.git"
+	},
+	"homepage": "https://gitlab.com/jan_herman/VS-Latte",
+	"bugs": {
+		"url": "https://gitlab.com/jan_herman/VS-Latte/-/issues"
+	},
 	"engines": {
-		"vscode": "^0.10.1"
+		"vscode": "^1.80.0"
 	},
 	"icon": "icon.png",
 	"categories": [
-		"Languages"
+		"Programming Languages",
+		"Snippets"
 	],
-	"galleryBanner": {
-		"color": "#3484D3",
-		"theme": "light"
-	},
+	"keywords": [
+		"latte",
+		"nette",
+		"neon",
+		"php",
+		"templates",
+		"syntax-highlighting",
+		"alpine.js",
+		"snippets"
+	],
 	"contributes": {
+		"configurationDefaults": {
+			"emmet.includeLanguages": {
+				"latte": "html"
+			}
+		},
 		"languages": [
 			{
 				"id": "neon",
@@ -101,8 +127,5 @@
 				"path": "./snippets/snippets.json"
 			}
 		]
-	},
-	"__metadata": {
-		"size": 479117
 	}
 }
