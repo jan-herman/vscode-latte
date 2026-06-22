@@ -1,5 +1,11 @@
 .vscode/**
 _syntaxes/**
+src/**
+**/*.ts
+tsconfig.json
+node_modules/**
+php-stubs/generator.php
+php-stubs/temp/**
 .vsixmanifest
 *.vsix
 .git/**
