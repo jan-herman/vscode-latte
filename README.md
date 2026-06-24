@@ -1,34 +1,42 @@
 # Nette Latte extension for VS Code
 
-Advanced Latte template syntax highlighting for Visual Studio Code, with Neon support and snippets included.
-
-This extension is inspired by the original [Kasik96.latte Marketplace extension](https://marketplace.visualstudio.com/items?itemName=Kasik96.latte) and focuses on modern, PHP-aware Latte highlighting for real-world templates.
+Complete Latte support for VS Code: full-featured syntax highlighting, comprehensive grammar coverage, and PHP-aware IntelliSense.
 
 ## Features
 
-- Advanced `.latte` syntax highlighting for Latte tags, expressions, filters, functions, comments, type annotations, dynamic tags, and embedded PHP-like expressions.
+### Syntax Highlighting
+
+Full grammar support for `.latte` and `.neon` files.
+
 - PHP-aware attribute highlighting for `n:` attributes, smart Latte attributes, curly attributes, and regular HTML attribute interpolation.
 - Alpine.js support for `x-*`, shorthand `:class`, event listeners like `@click`, modifiers like `@click.prevent`, and JavaScript highlighting inside Alpine attribute values.
 - Latte interpolation inside JavaScript and Alpine expressions.
-- Neon syntax highlighting for `.neon` files.
-- Latte snippets for blocks, loops, conditionals, includes, forms, filters, type tags, and common template helpers.
-- PHP-aware IntelliSense for typed Latte variables from `{parameters}`, `{varType}`, and `{templateType}`.
-- Cmd/Ctrl-click and hover for Latte template file references, including Barista-style path aliases.
-- Editor support for Latte comments, bracket matching, region folding, and HTML Emmet abbreviations in `.latte` files.
 
-## Examples
+### PHP-Aware IntelliSense
 
-```latte
-<a
-	n:class="button, $variant ? 'button--' . $variant, $class"
-	n:attr="href: $href, target: $target, ...$attr"
-	:class="{ active: open }"
-	@click.prevent="copyToClipboard({ text: {_('copy.label')} })"
-	href="/{$slug}"
->
-	{$title|noescape}
-</a>
-```
+PHP-aware IntelliSense is adapted from [smuuf/vscode-latte-lang](https://github.com/smuuf/vscode-latte-lang) by Přemysl Karbula.
+
+- Class-based declaration of template variables via Latte tags such as `{templateType My\Lovely\Type}`. See the [Latte type system docs](https://latte.nette.org/en/type-system) for detailed usage.
+- Go to variable definitions for variables defined in Latte files.
+- Go to class definitions for typed variables in Latte files.
+- Go to method definitions for methods called on typed variables in Latte files.
+- Go to referenced Latte files used in `{include ...}`, `{layout ...}`, `{sandbox ...}`, and `{extends ...}` tags.
+- Hover information for variable types in Latte files.
+- Hover information for return types of method calls in Latte files.
+- Type inference for values coming from known method calls with known return types.
+- Type resolution for basic iterables. For example, in `{foreach $a as $b}`, when `$a` is `array<MyType>`, `$b` is inferred as `MyType`.
+- Autocomplete support for `$variables` and `$object->methodName()` in Latte files.
+
+### Snippets
+
+Snippets for blocks, loops, includes, forms, filters, `n:` attributes, and common template helpers.
+
+### Native Editor Features
+
+- Region folding with `{* #region *}` and `{* #endregion *}`.
+- HTML Emmet completions work out of the box in `.latte` files.
+- Bracket matching for `{` and `}` tag pairs.
+- Toggle comments with the standard `Ctrl+/` shortcut.
 
 ## Path Aliases
 
@@ -68,9 +76,13 @@ This extension does not include a formatter, diagnostics, or full Latte language
 
 ## Credits
 
-Inspired by [Kasik96.latte](https://marketplace.visualstudio.com/items?itemName=Kasik96.latte).
+The PHP-aware runtime is adapted from [smuuf/vscode-latte-lang](https://github.com/smuuf/vscode-latte-lang).
+
+The Neon syntax grammar is derived from [Kasik96.latte](https://marketplace.visualstudio.com/items?itemName=Kasik96.latte).
 
 The Latte template engine is part of the [Nette](https://nette.org/) ecosystem.
+
+This is an independent extension and is not affiliated with or endorsed by the [Latte](https://latte.nette.org/) or [Nette](https://nette.org/) project.
 
 ## License
 
