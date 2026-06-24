@@ -27,6 +27,15 @@ export function resolveTemplatePath(
 	return ensureDefaultExtension(resolvedPath)
 }
 
+export function hasTemplatePathAlias(
+	targetPath: string,
+	pathAliases: TemplatePathAliases,
+): boolean {
+	return getSortedStringAliases(pathAliases).some(([alias]) =>
+		targetPath.startsWith(alias),
+	)
+}
+
 function resolveAliasPath(
 	targetPath: string,
 	context: TemplatePathResolutionContext,

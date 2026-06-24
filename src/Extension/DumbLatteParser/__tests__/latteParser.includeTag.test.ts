@@ -44,3 +44,39 @@ for (const [subject, expected] of Object.entries(EXPECTATIONS)) {
 		}
 	})
 }
+
+test('Test parser: IncludeTag: # remains a block reference without alias', () => {
+	expect(parseLatte("{include '#button'}", '/workspace/page.latte')).toEqual([])
+	expect(parseLatte('{include #button}', '/workspace/page.latte')).toEqual([])
+})
+
+test('Test parser: IncludeTag: # can be used as a path alias', () => {
+	const context = {
+		workspaceFolderPath: '/workspace',
+		pathAliases: {
+			'#': 'src/templates/components',
+		},
+	}
+
+	const quotedResult = parseLatte(
+		"{include '#button'}",
+		'/workspace/site/templates/page.latte',
+		context,
+	)
+	const quotedTag = quotedResult[0] as IncludeTag
+	expect([quotedTag.relativePath, quotedTag.absolutePath]).toMatchObject([
+		'#button',
+		'/workspace/src/templates/components/button.latte',
+	])
+
+	const unquotedResult = parseLatte(
+		'{include #button}',
+		'/workspace/site/templates/page.latte',
+		context,
+	)
+	const unquotedTag = unquotedResult[0] as IncludeTag
+	expect([unquotedTag.relativePath, unquotedTag.absolutePath]).toMatchObject([
+		'#button',
+		'/workspace/src/templates/components/button.latte',
+	])
+})

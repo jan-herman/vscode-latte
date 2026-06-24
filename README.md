@@ -60,6 +60,8 @@ Alias targets may be:
 
 Supported replacement variables are `${workspaceFolder}`, `${relativePath}`, and `${relativePathWithoutExtension}`. Callable Barista aliases cannot be evaluated by VS Code, so add explicit string mappings for paths you want to navigate.
 
+Alias prefixes are matched literally, so symbolic aliases such as `"#": "src/templates/components"` are supported. Without a matching `#` alias, paths like `{include '#button'}` stay treated as Latte block references.
+
 ## Not Included
 
 This extension does not include a formatter, diagnostics, or full Latte language server. Runtime features are intentionally focused on PHP-aware completion, hover, and navigation.
