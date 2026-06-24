@@ -36,15 +36,24 @@ function resolveAliasPath(
 			continue
 		}
 
+		const relativePath = normalizeAliasRelativePath(
+			targetPath.substring(alias.length),
+		)
+		const relativePathWithoutExtension = removeExtension(relativePath)
 		const replacementBase = resolveReplacementBase(
 			replacement,
 			context.workspaceFolderPath,
+			relativePath,
+			relativePathWithoutExtension,
 		)
 		if (!replacementBase) {
 			return null
 		}
 
-		const relativePath = targetPath.substring(alias.length).replace(/^[/\\]+/, '')
+		if (hasRelativePathPlaceholder(replacement)) {
+			return replacementBase
+		}
+
 		return path.normalize(path.join(replacementBase, relativePath))
 	}
 
@@ -65,6 +74,8 @@ function getSortedStringAliases(
 function resolveReplacementBase(
 	replacement: string,
 	workspaceFolderPath: string | null,
+	relativePath: string,
+	relativePathWithoutExtension: string,
 ): string | null {
 	let result = replacement
 	if (result.includes('${workspaceFolder}')) {
@@ -75,11 +86,42 @@ function resolveReplacementBase(
 		result = result.split('${workspaceFolder}').join(workspaceFolderPath)
 	}
 
+	if (result.includes('${relativePath}')) {
+		result = result.split('${relativePath}').join(relativePath)
+	}
+
+	if (result.includes('${relativePathWithoutExtension}')) {
+		result = result
+			.split('${relativePathWithoutExtension}')
+			.join(relativePathWithoutExtension)
+	}
+
 	if (path.isAbsolute(result)) {
 		return path.normalize(result)
 	}
 
 	return workspaceFolderPath ? path.resolve(workspaceFolderPath, result) : null
+}
+
+function normalizeAliasRelativePath(relativePath: string): string {
+	const trimmed = relativePath.replace(/^[/\\]+|[/\\]+$/g, '')
+	if (!trimmed) {
+		return ''
+	}
+
+	return path.normalize(trimmed.replace(/[\\/]+/g, path.sep))
+}
+
+function removeExtension(filePath: string): string {
+	const extension = path.extname(filePath)
+	return extension ? filePath.slice(0, -extension.length) : filePath
+}
+
+function hasRelativePathPlaceholder(replacement: string): boolean {
+	return (
+		replacement.includes('${relativePath}') ||
+		replacement.includes('${relativePathWithoutExtension}')
+	)
 }
 
 function ensureDefaultExtension(filePath: string): string {

@@ -72,7 +72,7 @@
 					"additionalProperties": {
 						"type": "string"
 					},
-					"markdownDescription": "Maps Barista-style Latte template path alias prefixes to workspace-relative or absolute directories. Replacement paths may use `${workspaceFolder}`; this is currently the only supported variable. String aliases only; callable Barista aliases need explicit string mappings here. Example: `{ \"@components\": \"site/snippets/components\", \"@templates\": \"${workspaceFolder}/site/templates\" }`."
+					"markdownDescription": "Maps Barista-style Latte template path alias prefixes to workspace-relative or absolute directories. Replacement paths may use `${workspaceFolder}`, `${relativePath}`, and `${relativePathWithoutExtension}`. `${relativePath}` is the normalized path segment after the matched alias, with leading and trailing slashes removed. `${relativePathWithoutExtension}` removes the final file extension from that segment. String aliases only; callable Barista aliases need explicit string mappings here. Example: `{ \"@components\": \"site/snippets/components\", \"@blocks\": \"src/blocks/${relativePathWithoutExtension}.template.latte\" }`."
 				}
 			}
 		},

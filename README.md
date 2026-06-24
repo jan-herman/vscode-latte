@@ -39,7 +39,9 @@ If your project uses [Barista](https://github.com/jan-herman/kirby-barista) temp
 	"latte.pathAliases": {
 		"@components": "site/snippets/components",
 		"@snippets": "site/snippets",
-		"@templates": "${workspaceFolder}/site/templates"
+		"@templates": "${workspaceFolder}/site/templates",
+		"@blocks": "src/blocks/${relativePath}",
+		"@blockTemplates": "src/blocks/${relativePathWithoutExtension}.template.latte"
 	}
 }
 ```
@@ -49,8 +51,14 @@ Alias targets may be:
 - workspace-relative paths, such as `site/snippets/components`
 - absolute paths, such as `/Users/me/project/site/snippets`
 - paths using `${workspaceFolder}`, such as `${workspaceFolder}/site/templates`
+- paths using `${relativePath}`, such as `src/blocks/${relativePath}`
+- paths using `${relativePathWithoutExtension}`, such as `src/blocks/${relativePathWithoutExtension}.template.latte`
 
-Currently `${workspaceFolder}` is the only supported replacement variable. Callable Barista aliases cannot be evaluated by VS Code, so add explicit string mappings for paths you want to navigate.
+`${relativePath}` is the normalized path segment after the matched alias, with leading and trailing slashes removed. For example, `{embed '@blocks/block-name'}` with `"@blocks": "src/blocks/${relativePath}"` resolves to `src/blocks/block-name.latte`.
+
+`${relativePathWithoutExtension}` is the same normalized path segment with the final file extension removed. For example, both `{embed '@blocks/block-name'}` and `{embed '@blocks/block-name.latte'}` can resolve to `src/blocks/block-name.template.latte` with `"@blocks": "src/blocks/${relativePathWithoutExtension}.template.latte"`.
+
+Supported replacement variables are `${workspaceFolder}`, `${relativePath}`, and `${relativePathWithoutExtension}`. Callable Barista aliases cannot be evaluated by VS Code, so add explicit string mappings for paths you want to navigate.
 
 ## Not Included
 
