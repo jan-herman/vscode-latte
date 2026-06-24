@@ -24,6 +24,10 @@ export async function activate(ctx: vscode.ExtensionContext): VoidPromise {
 	const currentVersion: string = ctx.extension.packageJSON.version
 	const lastVersion = ctx.workspaceState.get<string>('version')
 
+	if (!isIntelliSenseEnabled()) {
+		return
+	}
+
 	initExtensionContext(ctx)
 
 	// Discard whatever was in the data storage if we're witnessing
@@ -42,4 +46,10 @@ export async function activate(ctx: vscode.ExtensionContext): VoidPromise {
 
 export async function deactivate(ctx: vscode.ExtensionContext): VoidPromise {
 	dataStorage?.persistDatabase()
+}
+
+function isIntelliSenseEnabled(): boolean {
+	return vscode.workspace
+		.getConfiguration('latte')
+		.get<boolean>('intelliSense.enabled', true)
 }

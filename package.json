@@ -66,6 +66,11 @@
 		"configuration": {
 			"title": "Latte",
 			"properties": {
+				"latte.intelliSense.enabled": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enables PHP-aware Latte IntelliSense, including completions, hover, go to definition, PHP workspace scanning, and template file navigation. Disable this for syntax-highlighting-only usage. Requires reloading VS Code after changing."
+				},
 				"latte.pathAliases": {
 					"type": "object",
 					"default": {},

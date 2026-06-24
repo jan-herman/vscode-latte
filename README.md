@@ -16,6 +16,8 @@ Full grammar support for `.latte` and `.neon` files.
 
 PHP-aware IntelliSense is adapted from [smuuf/vscode-latte-lang](https://github.com/smuuf/vscode-latte-lang) by Přemysl Karbula.
 
+Set `latte.intelliSense.enabled` to `false` to disable the runtime and use this extension for syntax highlighting only. Reload VS Code after changing this setting.
+
 - Class-based declaration of template variables via Latte tags such as `{templateType My\Lovely\Type}`. See the [Latte type system docs](https://latte.nette.org/en/type-system) for detailed usage.
 - Go to variable definitions for variables defined in Latte files.
 - Go to class definitions for typed variables in Latte files.
