@@ -1,9 +1,9 @@
-import path from 'path'
 import DumbTag from '../Scanner/DumbTag'
 import { AbstractTag, ParsingContext, Range, TagReferencingTargetFile } from '../types'
 import { ArgsParser } from '../argsParser'
 import { stripIndentation } from '../../utils/stripIndentation'
 import { FILE_REGEX } from '../regexes'
+import { resolveTemplatePath } from '../templatePathResolver'
 
 /**
  * {layout "file"}
@@ -35,16 +35,12 @@ export default class LayoutTag extends AbstractTag implements TagReferencingTarg
 			return null
 		}
 
-		let absolutePath: string | null = null
-		if (parsingContext.filePath) {
-			const dirname = path.dirname(parsingContext.filePath)
-			absolutePath = path.resolve(dirname, relativePath)
-		}
+		const absolutePath = resolveTemplatePath(relativePath, parsingContext)
 
 		return new this(
 			dumbTag.tagRange,
 			relativePath,
-			dumbTag.argsOffset + originalTargetPathOffset,
+			dumbTag.argsOffset + getPathContentOffset(args, originalTargetPathOffset),
 			absolutePath,
 		)
 	}
@@ -61,4 +57,9 @@ export default class LayoutTag extends AbstractTag implements TagReferencingTarg
 		[Documentation](https://latte.nette.org/en/template-inheritance#toc-layout-inheritance)
 		`)
 	}
+}
+
+function getPathContentOffset(args: string, targetPathOffset: integer): integer {
+	const char = args[targetPathOffset]
+	return char === "'" || char === '"' ? targetPathOffset + 1 : targetPathOffset
 }

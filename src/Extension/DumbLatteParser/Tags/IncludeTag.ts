@@ -1,9 +1,9 @@
-import path from 'path'
 import DumbTag from '../Scanner/DumbTag'
 import { AbstractTag, ParsingContext, Range, TagReferencingTargetFile } from '../types'
 import { ArgsParser } from '../argsParser'
 import { stripIndentation } from '../../utils/stripIndentation'
 import { FILE_REGEX } from '../regexes'
+import { resolveTemplatePath } from '../templatePathResolver'
 
 /**
  * Reference: https://github.com/nette/latte/blob/794f252da7437499e467766d633eed85e1a437b7/src/Latte/Essential/CoreExtension.php#L211
@@ -31,6 +31,7 @@ export default class IncludeTag extends AbstractTag implements TagReferencingTar
 
 		const ap = new ArgsParser(args)
 		const type = ap.consumeAnyOfWords('file', 'block')
+		const explicitFile = type === 'file'
 		if (type && type !== 'file') {
 			// We care about files only, if the include type is specifed.
 			return null
@@ -45,20 +46,16 @@ export default class IncludeTag extends AbstractTag implements TagReferencingTar
 
 		// If Latte would interpret it as a block name, we don't want it.
 		// https://github.com/nette/latte/blob/794f252da7437499e467766d633eed85e1a437b7/src/Latte/Essential/CoreExtension.php#L221
-		if (relativePath.match(/^[\w-]+$/)) {
+		if (!explicitFile && relativePath.match(/^[\w-]+$/)) {
 			return null
 		}
 
-		let absolutePath: string | null = null
-		if (parsingContext.filePath) {
-			const dirname = path.dirname(parsingContext.filePath)
-			absolutePath = path.resolve(dirname, relativePath)
-		}
+		const absolutePath = resolveTemplatePath(relativePath, parsingContext)
 
 		return new this(
 			dumbTag.tagRange,
 			relativePath,
-			dumbTag.argsOffset + originalTargetPathOffset,
+			dumbTag.argsOffset + getPathContentOffset(args, originalTargetPathOffset),
 			absolutePath,
 		)
 	}
@@ -78,4 +75,9 @@ export default class IncludeTag extends AbstractTag implements TagReferencingTar
 		[Documentation](https://latte.nette.org/en/tags#toc-including-templates)
 		`)
 	}
+}
+
+function getPathContentOffset(args: string, targetPathOffset: integer): integer {
+	const char = args[targetPathOffset]
+	return char === "'" || char === '"' ? targetPathOffset + 1 : targetPathOffset
 }

@@ -1,5 +1,6 @@
 import { AbstractPoi } from '../LattePois/poiTypes'
 import DumbTag from './Scanner/DumbTag'
+import { TemplatePathAliases } from './templatePathResolver'
 
 export interface Range {
 	startOffset: integer
@@ -32,6 +33,8 @@ export interface TagReferencingTargetFile {
 
 export type ParsingContext = {
 	filePath: string | null
+	workspaceFolderPath: string | null
+	pathAliases: TemplatePathAliases
 }
 
 export type LatteFileStaticAnalysisResult = {

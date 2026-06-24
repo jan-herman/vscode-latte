@@ -12,6 +12,7 @@ import VarTypeTag from '../DumbLatteParser/Tags/VarTypeTag'
 import { getPhpTypeRepr } from '../phpTypeParser/utils'
 import TemplateTypeTag from '../DumbLatteParser/Tags/TemplateTypeTag'
 import ParametersTag from '../DumbLatteParser/Tags/ParametersTag'
+import EmbedTag from '../DumbLatteParser/Tags/EmbedTag'
 
 export function injectPoisIntoDumbTag(tag: AbstractTag): void {
 	tag.pois.push(...buildTagDescriptionPoi(tag))
@@ -25,6 +26,14 @@ export function injectPoisIntoDumbTag(tag: AbstractTag): void {
 			narrowType<ParametersTag>(tag)
 			tag.pois.push(...buildParametersTagPois(tag))
 			break
+		case isInstanceOf(tag, SandboxTag):
+			narrowType<SandboxTag>(tag)
+			tag.pois.push(...buildReferencedFilePois('include sandboxed', tag))
+			break
+		case isInstanceOf(tag, EmbedTag):
+			narrowType<EmbedTag>(tag)
+			tag.pois.push(...buildReferencedFilePois('embed', tag))
+			break
 		case isInstanceOf(tag, IncludeTag):
 			narrowType<IncludeTag>(tag)
 			tag.pois.push(...buildReferencedFilePois('include', tag))
@@ -33,10 +42,6 @@ export function injectPoisIntoDumbTag(tag: AbstractTag): void {
 			// "extends" tag is an alias of "layout" tag.
 			narrowType<LayoutTag>(tag)
 			tag.pois.push(...buildReferencedFilePois('extend', tag))
-			break
-		case isInstanceOf(tag, SandboxTag):
-			narrowType<SandboxTag>(tag)
-			tag.pois.push(...buildReferencedFilePois('include sandboxed', tag))
 			break
 		case isInstanceOf(tag, TemplateTypeTag):
 			narrowType<TemplateTypeTag>(tag)
@@ -75,8 +80,8 @@ function buildReferencedFilePois(
 		{
 			type: PoiType.Hover,
 			range: [
-				tag.relativePathOffset + 1,
-				tag.relativePathOffset + tag.relativePath.length + 1,
+				tag.relativePathOffset,
+				tag.relativePathOffset + tag.relativePath.length,
 			],
 			contentFn: async (
 				doc: TextDoc,
@@ -90,8 +95,8 @@ function buildReferencedFilePois(
 		{
 			type: PoiType.GotoDefinition,
 			range: [
-				tag.relativePathOffset + 1,
-				tag.relativePathOffset + tag.relativePath.length + 1,
+				tag.relativePathOffset,
+				tag.relativePathOffset + tag.relativePath.length,
 			],
 			contentFn: async (
 				doc: TextDoc,
@@ -105,12 +110,12 @@ function buildReferencedFilePois(
 				}
 
 				const locationLink: vscode.LocationLink = {
-					targetUri: vscode.Uri.parse(tag.absolutePath),
+					targetUri: vscode.Uri.file(tag.absolutePath),
 					targetRange: ZeroVoidRange,
 					originSelectionRange: new vscode.Range(
-						await getPositionAtOffset(tag.relativePathOffset + 1, doc),
+						await getPositionAtOffset(tag.relativePathOffset, doc),
 						await getPositionAtOffset(
-							tag.relativePathOffset + tag.relativePath.length + 1,
+							tag.relativePathOffset + tag.relativePath.length,
 							doc,
 						),
 					),

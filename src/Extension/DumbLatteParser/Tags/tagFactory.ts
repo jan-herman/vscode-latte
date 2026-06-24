@@ -11,6 +11,7 @@ import SandboxTag from './SandboxTag'
 import CaptureTag from './CaptureTag'
 import TemplateTypeTag from './TemplateTypeTag'
 import ParametersTag from './ParametersTag'
+import EmbedTag from './EmbedTag'
 
 // NOTE: 'unknown' to avoid (I think nonsensical) "Type 'typeof VarTag' is
 // not assignable to type 'typeof AbstractTag'." error, which I don't know
@@ -24,6 +25,7 @@ const KNOWN_TAG_TYPES: (unknown | typeof AbstractTag)[] = [
 	LayoutTag,
 	ExtendsTag,
 	SandboxTag,
+	EmbedTag,
 	CaptureTag,
 	TemplateTypeTag,
 	ParametersTag,

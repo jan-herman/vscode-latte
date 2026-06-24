@@ -12,6 +12,8 @@ This extension is inspired by the original [Kasik96.latte Marketplace extension]
 - Latte interpolation inside JavaScript and Alpine expressions.
 - Neon syntax highlighting for `.neon` files.
 - Latte snippets for blocks, loops, conditionals, includes, forms, filters, type tags, and common template helpers.
+- PHP-aware IntelliSense for typed Latte variables from `{parameters}`, `{varType}`, and `{templateType}`.
+- Cmd/Ctrl-click and hover for Latte template file references, including Barista-style path aliases.
 - Editor support for Latte comments, bracket matching, region folding, and HTML Emmet abbreviations in `.latte` files.
 
 ## Examples
@@ -28,9 +30,31 @@ This extension is inspired by the original [Kasik96.latte Marketplace extension]
 </a>
 ```
 
+## Path Aliases
+
+If your project uses [Barista](https://github.com/jan-herman/kirby-barista) template path aliases, mirror the string aliases in VS Code settings:
+
+```json
+{
+	"latte.pathAliases": {
+		"@components": "site/snippets/components",
+		"@snippets": "site/snippets",
+		"@templates": "${workspaceFolder}/site/templates"
+	}
+}
+```
+
+Alias targets may be:
+
+- workspace-relative paths, such as `site/snippets/components`
+- absolute paths, such as `/Users/me/project/site/snippets`
+- paths using `${workspaceFolder}`, such as `${workspaceFolder}/site/templates`
+
+Currently `${workspaceFolder}` is the only supported replacement variable. Callable Barista aliases cannot be evaluated by VS Code, so add explicit string mappings for paths you want to navigate.
+
 ## Not Included
 
-This extension provides syntax highlighting, language configuration, Emmet defaults, and snippets. It does not include a formatter, language server, diagnostics, completion engine, or runtime framework integration.
+This extension does not include a formatter, diagnostics, or full Latte language server. Runtime features are intentionally focused on PHP-aware completion, hover, and navigation.
 
 ## Credits
 

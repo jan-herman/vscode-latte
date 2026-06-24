@@ -162,7 +162,7 @@ export class LatteTagsProcessor {
 
 	public async scan(doc: TextDocument, latteFileInfo: LatteFileInfo): VoidPromise {
 		const msg = debugMessage('Scanning Latte document')
-		const parsed = parseLatte(doc.getText(), doc.uri.path)
+		const parsed = parseLatte(doc.getText(), doc.uri)
 
 		for (const tag of parsed) {
 			injectPoisIntoDumbTag(tag)

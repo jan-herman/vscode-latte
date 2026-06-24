@@ -63,6 +63,19 @@
 		"typescript": "^5.2.2"
 	},
 	"contributes": {
+		"configuration": {
+			"title": "Latte",
+			"properties": {
+				"latte.pathAliases": {
+					"type": "object",
+					"default": {},
+					"additionalProperties": {
+						"type": "string"
+					},
+					"markdownDescription": "Maps Barista-style Latte template path alias prefixes to workspace-relative or absolute directories. Replacement paths may use `${workspaceFolder}`; this is currently the only supported variable. String aliases only; callable Barista aliases need explicit string mappings here. Example: `{ \"@components\": \"site/snippets/components\", \"@templates\": \"${workspaceFolder}/site/templates\" }`."
+				}
+			}
+		},
 		"configurationDefaults": {
 			"emmet.includeLanguages": {
 				"latte": "html"
