@@ -46,7 +46,7 @@ If your project uses [Barista](https://github.com/jan-herman/kirby-barista) temp
 
 ```json
 {
-	"latte.pathAliases": {
+	"latte.intelliSense.pathAliases": {
 		"@components": "site/snippets/components",
 		"@snippets": "site/snippets",
 		"@templates": "${workspaceFolder}/site/templates",

@@ -33,7 +33,7 @@ function createParsingContext(
 		: null
 	const pathAliases = documentUri
 		? vscode.workspace
-				.getConfiguration('latte', documentUri)
+				.getConfiguration('latte.intelliSense', documentUri)
 				.get<TemplatePathAliases>('pathAliases', {})
 		: {}
 
