@@ -548,6 +548,9 @@
                     "include": "text.html.latte#latte-expand-operator"
                 },
                 {
+                    "include": "text.html.latte#php-type-cast"
+                },
+                {
                     "include": "text.html.latte#latte-parenthesized-expression"
                 },
                 {
@@ -583,6 +586,9 @@
                 },
                 {
                     "include": "text.html.latte#latte-expand-operator"
+                },
+                {
+                    "include": "text.html.latte#php-type-cast"
                 },
                 {
                     "include": "text.html.latte#latte-parenthesized-expression"
