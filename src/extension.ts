@@ -3,6 +3,7 @@ import { ExtensionCore } from './Extension/ExtensionCore'
 import { DataStorage } from './Extension/utils/DataStorage'
 import { timeit } from './Extension/utils/timeit'
 import { initExtensionContext } from './Extension/phpStubs'
+import { registerLatteEmmetCompletionProvider } from './Extension/SfcEmmet/SfcEmmetCompletionProvider'
 
 let extCore: ExtensionCore | null
 let dataStorage: DataStorage | null
@@ -21,6 +22,8 @@ async function prepareDataStorage(
 }
 
 export async function activate(ctx: vscode.ExtensionContext): VoidPromise {
+	ctx.subscriptions.push(registerLatteEmmetCompletionProvider())
+
 	const currentVersion: string = ctx.extension.packageJSON.version
 	const lastVersion = ctx.workspaceState.get<string>('version')
 

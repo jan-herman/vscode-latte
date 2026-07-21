@@ -30,7 +30,7 @@
 		"clear-build": "rm -rf ./out/*",
 		"vscode:prepublish": "npm run clear-build && npm run esbuild-base -- --minify",
 		"php-stubs": "php ./php-stubs/generator.php",
-		"esbuild-base": "npm run php-stubs && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild-base": "npm run php-stubs && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --main-fields=module,main",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
 		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
 	},
@@ -50,8 +50,10 @@
 	],
 	"dependencies": {
 		"@flatten-js/interval-tree": "^1.1.1",
+		"@vscode/emmet-helper": "^2.11.0",
 		"json5": "^2.2.3",
-		"php-parser": "^3.1.5"
+		"php-parser": "^3.1.5",
+		"vscode-languageserver-textdocument": "^1.0.12"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.8",
@@ -79,11 +81,6 @@
 					},
 					"markdownDescription": "Maps Barista-style Latte template path alias prefixes to workspace-relative or absolute directories. Replacement paths may use `${workspaceFolder}`, `${relativePath}`, and `${relativePathWithoutExtension}`. `${relativePath}` is the normalized path segment after the matched alias, with leading and trailing slashes removed. `${relativePathWithoutExtension}` removes the final file extension from that segment. String aliases only; callable Barista aliases need explicit string mappings here. Example: `{ \"@components\": \"site/snippets/components\", \"@blocks\": \"src/blocks/${relativePathWithoutExtension}.template.latte\" }`."
 				}
-			}
-		},
-		"configurationDefaults": {
-			"emmet.includeLanguages": {
-				"latte": "html"
 			}
 		},
 		"languages": [
@@ -142,6 +139,19 @@
 				],
 				"embeddedLanguages": {
 					"meta.embedded.inline.php.latte": "php"
+				}
+			},
+			{
+				"scopeName": "latte.sfc.injection",
+				"path": "./syntaxes/latte-sfc.injection.json",
+				"injectTo": [
+					"text.html.latte"
+				],
+				"embeddedLanguages": {
+					"source.css.embedded.latte": "css",
+					"source.css.scss.embedded.latte": "scss",
+					"source.js.embedded.latte": "javascript",
+					"source.ts.embedded.latte": "typescript"
 				}
 			},
 			{

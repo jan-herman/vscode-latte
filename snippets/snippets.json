@@ -1,4 +1,24 @@
 {
+	"Latte SFC: style": {
+		"prefix": "style",
+		"body": "{style}\n\t$0\n{/style}",
+		"description": "Latte SFC: Adds a CSS style block."
+	},
+	"Latte SFC: style (SCSS)": {
+		"prefix": "style scss",
+		"body": "{style lang: 'scss'}\n\t$0\n{/style}",
+		"description": "Latte SFC: Adds an SCSS style block."
+	},
+	"Latte SFC: script": {
+		"prefix": "script",
+		"body": "{script}\n\t$0\n{/script}",
+		"description": "Latte SFC: Adds a JavaScript script block."
+	},
+	"Latte SFC: script (TypeScript)": {
+		"prefix": "script ts",
+		"body": "{script lang: 'ts'}\n\t$0\n{/script}",
+		"description": "Latte SFC: Adds a TypeScript script block."
+	},
 	"Latte tag: block": {
 		"prefix": "block",
 		"body": "{block ${1:content}}\n\t$0\n{/block}",

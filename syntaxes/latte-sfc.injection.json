@@ -1,0 +1,203 @@
+{
+    "scopeName": "latte.sfc.injection",
+    "injectionSelector": "L:text.html.latte",
+    "patterns": [
+        {
+            "include": "#style-scss"
+        },
+        {
+            "include": "#style-css"
+        },
+        {
+            "include": "#script-ts"
+        },
+        {
+            "include": "#script-js"
+        }
+    ],
+    "repository": {
+        "style-scss": {
+            "begin": "(\\{)(style)(?=\\s|\\})(?=[^}]*\\blang\\s*:\\s*(?:'scss'|\\\"scss\\\"|scss)(?=\\s|,|\\}))",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                }
+            },
+            "end": "(\\{\\/)(style)(\\})",
+            "endCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                },
+                "3": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "meta.embedded.block.style.scss.latte",
+            "patterns": [
+                {
+                    "include": "#latte-tag-arguments"
+                },
+                {
+                    "include": "#scss-body"
+                }
+            ]
+        },
+        "style-css": {
+            "begin": "(\\{)(style)(?=\\s|\\})",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                }
+            },
+            "end": "(\\{\\/)(style)(\\})",
+            "endCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                },
+                "3": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "meta.embedded.block.style.css.latte",
+            "patterns": [
+                {
+                    "include": "#latte-tag-arguments"
+                },
+                {
+                    "include": "#css-body"
+                }
+            ]
+        },
+        "script-ts": {
+            "begin": "(\\{)(script)(?=\\s|\\})(?=[^}]*\\blang\\s*:\\s*(?:'ts'|\\\"ts\\\"|ts)(?=\\s|,|\\}))",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                }
+            },
+            "end": "(\\{\\/)(script)(\\})",
+            "endCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                },
+                "3": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "meta.embedded.block.script.ts.latte",
+            "patterns": [
+                {
+                    "include": "#latte-tag-arguments"
+                },
+                {
+                    "include": "#typescript-body"
+                }
+            ]
+        },
+        "script-js": {
+            "begin": "(\\{)(script)(?=\\s|\\})",
+            "beginCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                }
+            },
+            "end": "(\\{\\/)(script)(\\})",
+            "endCaptures": {
+                "1": {
+                    "name": "tag.begin.latte"
+                },
+                "2": {
+                    "name": "keyword.control.pair.latte"
+                },
+                "3": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "meta.embedded.block.script.js.latte",
+            "patterns": [
+                {
+                    "include": "#latte-tag-arguments"
+                },
+                {
+                    "include": "#javascript-body"
+                }
+            ]
+        },
+        "latte-tag-arguments": {
+            "begin": "\\G",
+            "end": "\\}",
+            "endCaptures": {
+                "0": {
+                    "name": "tag.end.latte"
+                }
+            },
+            "name": "source.latte",
+            "patterns": [
+                {
+                    "include": "text.html.latte#latte-expression"
+                }
+            ]
+        },
+        "css-body": {
+            "begin": "(?!\\G)",
+            "end": "(?=\\{\\/style\\})",
+            "name": "source.css.embedded.latte",
+            "patterns": [
+                {
+                    "include": "source.css"
+                }
+            ]
+        },
+        "scss-body": {
+            "begin": "(?!\\G)",
+            "end": "(?=\\{\\/style\\})",
+            "name": "source.css.scss.embedded.latte",
+            "patterns": [
+                {
+                    "include": "source.css.scss"
+                }
+            ]
+        },
+        "javascript-body": {
+            "begin": "(?!\\G)",
+            "end": "(?=\\{\\/script\\})",
+            "name": "source.js.embedded.latte",
+            "patterns": [
+                {
+                    "include": "source.js"
+                }
+            ]
+        },
+        "typescript-body": {
+            "begin": "(?!\\G)",
+            "end": "(?=\\{\\/script\\})",
+            "name": "source.ts.embedded.latte",
+            "patterns": [
+                {
+                    "include": "source.ts"
+                }
+            ]
+        }
+    }
+}
