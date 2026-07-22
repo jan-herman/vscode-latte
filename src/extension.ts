@@ -3,7 +3,7 @@ import { ExtensionCore } from './Extension/ExtensionCore'
 import { DataStorage } from './Extension/utils/DataStorage'
 import { timeit } from './Extension/utils/timeit'
 import { initExtensionContext } from './Extension/phpStubs'
-import { registerLatteEmmetCompletionProvider } from './Extension/SfcEmmet/SfcEmmetCompletionProvider'
+import { registerLatteEmmetCompletionProvider } from './Extension/Sfc/SfcEmmetCompletionProvider'
 
 let extCore: ExtensionCore | null
 let dataStorage: DataStorage | null
