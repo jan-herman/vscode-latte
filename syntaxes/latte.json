@@ -282,26 +282,35 @@
                 {
                     "captures": {
                         "1": {
+                            "name": "keyword.other.modifier.latte"
+                        },
+                        "2": {
                             "name": "entity.name.section.latte"
                         }
                     },
-                    "match": "(?:(?<=\\{block\\s)|(?<=\\{\\/block\\s))([a-zA-Z_][a-zA-Z0-9_-]*)"
+                    "match": "(?:(?<=\\{block\\s)(local)(?=\\s)|(?:(?<=\\{block\\s)|(?<=\\{block\\slocal\\s)|(?<=\\{\\/block\\s))([a-zA-Z_][a-zA-Z0-9_-]*))"
                 },
                 {
                     "captures": {
                         "1": {
+                            "name": "keyword.other.modifier.latte"
+                        },
+                        "2": {
                             "name": "entity.name.section.latte"
                         }
                     },
-                    "match": "(?:(?<=\\{define\\s)|(?<=\\{\\/define\\s))([a-zA-Z_][a-zA-Z0-9_-]*)"
+                    "match": "(?:(?<=\\{define\\s)(local)(?=\\s)|(?:(?<=\\{define\\s)|(?<=\\{define\\slocal\\s)|(?<=\\{\\/define\\s))([a-zA-Z_][a-zA-Z0-9_-]*))"
                 },
                 {
                     "captures": {
                         "1": {
+                            "name": "keyword.other.modifier.latte"
+                        },
+                        "2": {
                             "name": "entity.name.section.latte"
                         }
                     },
-                    "match": "(?<=\\{include\\s)([a-zA-Z_][a-zA-Z0-9_-]*)"
+                    "match": "(?:(?<=\\{include\\s)(block)(?=\\s)|(?:(?<=\\{include\\s)|(?<=\\{include\\sblock\\s))([a-zA-Z_][a-zA-Z0-9_-]*))"
                 },
                 {
                     "captures": {
