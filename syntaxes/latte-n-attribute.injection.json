@@ -27,6 +27,12 @@
             "include": "#n-class-unquoted"
         },
         {
+            "include": "#n-ifset-quoted"
+        },
+        {
+            "include": "#n-ifset-unquoted"
+        },
+        {
             "include": "#n-attribute-quoted"
         },
         {
@@ -330,6 +336,82 @@
                 }
             ]
         },
+        "n-ifset-quoted": {
+            "begin": "(?<!\\S)(?:(n:)|(:|@|#))((?:inner-|tag-)?ifset)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*([\"'])\\s*(?:(?!block(?=\\s|[,\"']))([a-zA-Z_][a-zA-Z0-9_-]*)(?=\\s*(?:,\\s*[a-zA-Z_][a-zA-Z0-9_-]*\\s*)*\\7))?",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "4": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "5": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "6": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "7": {
+                    "name": "punctuation.definition.string.begin.html"
+                },
+                "8": {
+                    "name": "entity.name.section.latte"
+                }
+            },
+            "end": "\\7|(?=>\\s*$)|$",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
+            },
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#n-ifset-value-quoted"
+                }
+            ]
+        },
+        "n-ifset-unquoted": {
+            "begin": "(?<!\\S)(?:(n:)|(:|@|#))((?:inner-|tag-)?ifset)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*(?=[^\\s\"'=<>`{]+)(?:(?!block(?=\\s|,|/?>|$))([a-zA-Z_][a-zA-Z0-9_-]*)(?=\\s*(?:,\\s*[a-zA-Z_][a-zA-Z0-9_-]*\\s*)*(?=\\s|/?>|$)))?",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "2": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "3": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "4": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "5": {
+                    "name": "entity.other.attribute-name.html"
+                },
+                "6": {
+                    "name": "punctuation.separator.key-value.html"
+                },
+                "7": {
+                    "name": "entity.name.section.latte"
+                }
+            },
+            "end": "(?=\\s|/?>)|$",
+            "name": "meta.attribute.n-macro.latte",
+            "contentName": "meta.embedded.inline.php.latte",
+            "patterns": [
+                {
+                    "include": "#n-ifset-value-unquoted"
+                }
+            ]
+        },
         "n-attribute-quoted": {
             "begin": "(?<!\\S)(?:(n:)|(:|@|#))([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*([\"'])",
             "beginCaptures": {
@@ -454,6 +536,53 @@
                     "include": "source.php"
                 }
             ]
+        },
+        "n-ifset-value-quoted": {
+            "patterns": [
+                {
+                    "include": "#n-ifset-block-modifier"
+                },
+                {
+                    "include": "#n-ifset-static-block-after-comma-quoted"
+                },
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
+        "n-ifset-value-unquoted": {
+            "patterns": [
+                {
+                    "include": "#n-ifset-block-modifier"
+                },
+                {
+                    "match": "(?<=,)\\s*([a-zA-Z_][a-zA-Z0-9_-]*)(?![a-zA-Z0-9_-])(?=\\s*(?:,\\s*[a-zA-Z_][a-zA-Z0-9_-]*\\s*)*(?=\\s|/?>|$))",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.section.latte"
+                        }
+                    }
+                },
+                {
+                    "include": "#latte-expression"
+                }
+            ]
+        },
+        "n-ifset-block-modifier": {
+            "match": "(?<![a-zA-Z0-9_-])(block)(?=\\s)",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.modifier.latte"
+                }
+            }
+        },
+        "n-ifset-static-block-after-comma-quoted": {
+            "match": "(?<=,)\\s*([a-zA-Z_][a-zA-Z0-9_-]*)(?![a-zA-Z0-9_-])(?=\\s*(?:,\\s*[a-zA-Z_][a-zA-Z0-9_-]*\\s*)*[\"'])",
+            "captures": {
+                "1": {
+                    "name": "entity.name.section.latte"
+                }
+            }
         },
         "latte-expression": {
             "patterns": [
