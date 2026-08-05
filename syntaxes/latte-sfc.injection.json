@@ -145,7 +145,12 @@
             ]
         },
         "latte-tag-arguments": {
-            "begin": "\\G",
+            "begin": "\\G\\s*(?:(lazy)(?=\\s*(?:,|\\}|$)))?",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.modifier.latte"
+                }
+            },
             "end": "\\}",
             "endCaptures": {
                 "0": {
@@ -155,9 +160,20 @@
             "name": "source.latte",
             "patterns": [
                 {
+                    "include": "#latte-sfc-modifier"
+                },
+                {
                     "include": "text.html.latte#latte-expression"
                 }
             ]
+        },
+        "latte-sfc-modifier": {
+            "captures": {
+                "1": {
+                    "name": "keyword.other.modifier.latte"
+                }
+            },
+            "match": "(?:^|(?<=,))\\s*(lazy)(?=\\s*(?:,|\\}|$))"
         },
         "css-body": {
             "begin": "(?!\\G)",
