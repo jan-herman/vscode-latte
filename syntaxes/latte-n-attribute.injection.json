@@ -15,31 +15,19 @@
             "include": "#smart-attribute-curly"
         },
         {
-            "include": "#n-class-double-quoted-multiline"
+            "include": "#n-class-quoted-multiline"
         },
         {
-            "include": "#n-class-single-quoted-multiline"
+            "include": "#n-attribute-quoted-multiline"
         },
         {
-            "include": "#n-attribute-double-quoted-multiline"
-        },
-        {
-            "include": "#n-attribute-single-quoted-multiline"
-        },
-        {
-            "include": "#n-class-double-quoted"
-        },
-        {
-            "include": "#n-class-single-quoted"
+            "include": "#n-class-quoted"
         },
         {
             "include": "#n-class-unquoted"
         },
         {
-            "include": "#n-attribute-double-quoted"
-        },
-        {
-            "include": "#n-attribute-single-quoted"
+            "include": "#n-attribute-quoted"
         },
         {
             "include": "#n-attribute-unquoted"
@@ -218,8 +206,8 @@
                 }
             ]
         },
-        "n-class-double-quoted": {
-            "begin": "(?<!\\S)(?:(n:)|(:|@|#))(class)\\s*(=)\\s*(\")",
+        "n-class-quoted": {
+            "begin": "(?<!\\S)(?:(n:)|(:|@|#))(class)\\s*(=)\\s*([\"'])",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -237,40 +225,7 @@
                     "name": "punctuation.definition.string.begin.html"
                 }
             },
-            "end": "\"|(?=>\\s*$)|$",
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.string.end.html"
-                }
-            },
-            "name": "meta.attribute.n-macro.latte",
-            "contentName": "meta.embedded.inline.php.latte",
-            "patterns": [
-                {
-                    "include": "#n-class-value"
-                }
-            ]
-        },
-        "n-class-single-quoted": {
-            "begin": "(?<!\\S)(?:(n:)|(:|@|#))(class)\\s*(=)\\s*(')",
-            "beginCaptures": {
-                "1": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "2": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "3": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "4": {
-                    "name": "punctuation.separator.key-value.html"
-                },
-                "5": {
-                    "name": "punctuation.definition.string.begin.html"
-                }
-            },
-            "end": "'|(?=>\\s*$)|$",
+            "end": "\\5|(?=>\\s*$)|$",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.end.html"
@@ -309,8 +264,8 @@
                 }
             ]
         },
-        "n-class-double-quoted-multiline": {
-            "begin": "(?<!\\S)(n:)(class)\\s*(=)\\s*(\")(?=\\s*$)",
+        "n-class-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)(class)\\s*(=)\\s*([\"'])(?=\\s*$)",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -325,7 +280,7 @@
                     "name": "punctuation.definition.string.begin.html"
                 }
             },
-            "end": "\"",
+            "end": "\\4",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.end.html"
@@ -339,38 +294,8 @@
                 }
             ]
         },
-        "n-class-single-quoted-multiline": {
-            "begin": "(?<!\\S)(n:)(class)\\s*(=)\\s*(')(?=\\s*$)",
-            "beginCaptures": {
-                "1": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "2": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "3": {
-                    "name": "punctuation.separator.key-value.html"
-                },
-                "4": {
-                    "name": "punctuation.definition.string.begin.html"
-                }
-            },
-            "end": "'",
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.string.end.html"
-                }
-            },
-            "name": "meta.attribute.n-macro.latte",
-            "contentName": "meta.embedded.inline.php.latte",
-            "patterns": [
-                {
-                    "include": "#n-class-value"
-                }
-            ]
-        },
-        "n-attribute-double-quoted-multiline": {
-            "begin": "(?<!\\S)(n:)([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*(\")(?=\\s*$)",
+        "n-attribute-quoted-multiline": {
+            "begin": "(?<!\\S)(n:)([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*([\"'])(?=\\s*$)",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -391,7 +316,7 @@
                     "name": "punctuation.definition.string.begin.html"
                 }
             },
-            "end": "\"",
+            "end": "\\6",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.end.html"
@@ -405,44 +330,8 @@
                 }
             ]
         },
-        "n-attribute-single-quoted-multiline": {
-            "begin": "(?<!\\S)(n:)([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*(')(?=\\s*$)",
-            "beginCaptures": {
-                "1": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "2": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "3": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "4": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "5": {
-                    "name": "punctuation.separator.key-value.html"
-                },
-                "6": {
-                    "name": "punctuation.definition.string.begin.html"
-                }
-            },
-            "end": "'",
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.string.end.html"
-                }
-            },
-            "name": "meta.attribute.n-macro.latte",
-            "contentName": "meta.embedded.inline.php.latte",
-            "patterns": [
-                {
-                    "include": "#latte-expression"
-                }
-            ]
-        },
-        "n-attribute-double-quoted": {
-            "begin": "(?<!\\S)(?:(n:)|(:|@|#))([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*(\")",
+        "n-attribute-quoted": {
+            "begin": "(?<!\\S)(?:(n:)|(:|@|#))([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*([\"'])",
             "beginCaptures": {
                 "1": {
                     "name": "entity.other.attribute-name.html"
@@ -466,46 +355,7 @@
                     "name": "punctuation.definition.string.begin.html"
                 }
             },
-            "end": "\"|(?=>\\s*$)|$",
-            "endCaptures": {
-                "0": {
-                    "name": "punctuation.definition.string.end.html"
-                }
-            },
-            "name": "meta.attribute.n-macro.latte",
-            "contentName": "meta.embedded.inline.php.latte",
-            "patterns": [
-                {
-                    "include": "#latte-expression"
-                }
-            ]
-        },
-        "n-attribute-single-quoted": {
-            "begin": "(?<!\\S)(?:(n:)|(:|@|#))([a-zA-Z0-9_-]+)(?::([a-zA-Z_-]+))?(?:\\.([a-zA-Z_-]+))*\\s*(=)\\s*(')",
-            "beginCaptures": {
-                "1": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "2": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "3": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "4": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "5": {
-                    "name": "entity.other.attribute-name.html"
-                },
-                "6": {
-                    "name": "punctuation.separator.key-value.html"
-                },
-                "7": {
-                    "name": "punctuation.definition.string.begin.html"
-                }
-            },
-            "end": "'|(?=>\\s*$)|$",
+            "end": "\\7|(?=>\\s*$)|$",
             "endCaptures": {
                 "0": {
                     "name": "punctuation.definition.string.end.html"
@@ -595,34 +445,7 @@
         "n-class-value": {
             "patterns": [
                 {
-                    "include": "text.html.latte#php-block-comment"
-                },
-                {
-                    "include": "text.html.latte#latte-filter"
-                },
-                {
-                    "include": "text.html.latte#latte-filter-named-argument"
-                },
-                {
-                    "include": "text.html.latte#latte-operator"
-                },
-                {
-                    "include": "text.html.latte#latte-expand-operator"
-                },
-                {
-                    "include": "text.html.latte#php-type-cast"
-                },
-                {
-                    "include": "text.html.latte#latte-parenthesized-expression"
-                },
-                {
-                    "include": "text.html.latte#latte-function-call"
-                },
-                {
-                    "include": "text.html.latte#latte-conditional-operator"
-                },
-                {
-                    "include": "#latte-array"
+                    "include": "#latte-expression-common"
                 },
                 {
                     "include": "#n-class-literal"
@@ -633,6 +456,22 @@
             ]
         },
         "latte-expression": {
+            "patterns": [
+                {
+                    "include": "#latte-expression-common"
+                },
+                {
+                    "include": "text.html.latte#latte-array-key"
+                },
+                {
+                    "include": "text.html.latte#latte-unquoted-string"
+                },
+                {
+                    "include": "source.php"
+                }
+            ]
+        },
+        "latte-expression-common": {
             "patterns": [
                 {
                     "include": "text.html.latte#php-block-comment"
@@ -663,15 +502,6 @@
                 },
                 {
                     "include": "#latte-array"
-                },
-                {
-                    "include": "text.html.latte#latte-array-key"
-                },
-                {
-                    "include": "text.html.latte#latte-unquoted-string"
-                },
-                {
-                    "include": "source.php"
                 }
             ]
         },
